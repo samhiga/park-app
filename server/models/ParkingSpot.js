@@ -35,10 +35,10 @@ const ParkingSpotSchema = new Schema({
     required: true,
     //Have a REGEX Verifier for zipcode
   },
-  images: {
-    type: String,
-    //Not required to upload a pic.
-  },
+  // images: {
+  //   type: Buffer,
+  //   // https://mongoosejs.com/docs/schematypes.html#buffers
+  // },
   price: {
     type: Number,
     required: true,
