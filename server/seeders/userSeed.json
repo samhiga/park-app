@@ -1,0 +1,21 @@
+[
+  {
+    "username": "Brian Kernighan",
+    "email": "bkernighan@techfriends.dev",
+    "password": "password01",
+    "biography": "I am a computer scientist who worked at Bell Labs and helped create the C programming language."
+  
+  },
+  {
+    "username": "Ada Lovelace",
+    "email": "ada@lovelace.com",
+    "password": "password02",
+    "biography": "I am often considered the world's first computer programmer."
+  },
+  {
+    "username": "Grace Hopper",
+    "email": "grace@hopper.org",
+    "password": "password03",
+    "biography": "I was a pioneer in computer programming and helped develop the COBOL programming language."
+  }
+]

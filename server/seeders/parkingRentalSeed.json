@@ -1,0 +1,26 @@
+[
+    {
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "rentee": "615f9b5079fde5a520ad1e7f",
+      "dateBookedStart": "2022-08-15T10:00:00.000Z",
+      "dateBookedEnd": "2022-08-15T18:00:00.000Z",
+      "pricePaid": 25.0,
+      "active": true
+    },
+    {
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "rentee": "615f9b5179fde5a520ad1e80",
+      "dateBookedStart": "2022-09-01T15:30:00.000Z",
+      "dateBookedEnd": "2022-09-01T20:30:00.000Z",
+      "pricePaid": 15.0,
+      "active": true
+    },
+    {
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "rentee": "615f9b4f79fde5a520ad1e7e",
+      "dateBookedStart": "2022-07-10T08:00:00.000Z",
+      "dateBookedEnd": "2022-07-11T08:00:00.000Z",
+      "pricePaid": 40.0,
+      "active": true
+    }
+  ]
