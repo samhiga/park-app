@@ -2,9 +2,6 @@ const { Schema, model } = require("mongoose");
 
 const bcrypt = require("bcrypt");
 
-const parkingSpot = require("./ParkingSpot");
-const parkingRental = require("./ParkingRental");
-
 const userSchema = new Schema({
   username: {
     type: String,
@@ -17,18 +14,35 @@ const userSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    //Add Regex verification for password
   },
   email: {
     type: String,
     required: true,
     trim: true,
+    //Add Regex verification for email
   },
   biography: {
     type: String,
   },
-  rentalSpots: [{}],
-  renteeSpots: [{}],
-  history: [{}],
+  rentalSpots: [
+    {
+      type: Schema.Types.ObjectID,
+      ref: "ParkingSpot",
+    },
+  ],
+  renteeSpots: [
+    {
+      type: Schema.Types.ObjectID,
+      ref: "ParkingSpot",
+    },
+  ],
+  history: [
+    {
+      type: Schema.Types.ObjectID,
+      ref: "ParkingRental",
+    },
+  ],
 });
 
 // Set up pre-save middleware to create password

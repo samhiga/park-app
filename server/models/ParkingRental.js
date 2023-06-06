@@ -26,10 +26,9 @@ const ParkingRentalSchema = new Schema({
   active: {
     type: Boolean,
     required: true,
-  }
-  
+  },
 });
 
 const ParkingRental = model("ParkingRental", ParkingRentalSchema);
 
-module.exports = ParkingSpot;
+module.exports = ParkingRental;

@@ -1,43 +1,51 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
+
+// image: String
+//I used to belong in ParkingSpot
 
 const typeDefs = gql`
-  
-
+  scalar Date
   type ParkingSpot {
     _id: ID!
+    name: String!
+    description: String!
     owner: User!
-    image: String!
     streetAddress: String!
     zipcode: String!
-    name: String!
     pricebyday: Int!
     active: Boolean!
-    datesAvailable: [String]!
-    description: String!
-    daysUnavailable: [String]!
+    dateStart: String!
+    dateEnd: String!
+    sunday: Boolean
+    monday: Boolean
+    tuesday: Boolean
+    wednesday: Boolean
+    thursday: Boolean
+    friday: Boolean
+    saturday: Boolean
   }
 
-  type ParkingSpotRental {
-    _id: ID
-    owner: User
-    rentee: User
-    dateBookedStart: String
-    dateBookedEnd: String
-    pricePaid: Int
-    active: Boolean
+  type ParkingRental {
+    _id: ID!
+    owner: User!
+    rentee: User!
+    dateBookedStart: Date!
+    dateBookedEnd: Date!
+    pricePaid: Int!
+    active: Boolean!
   }
 
   type User {
-    _id: ID
-    userName: String
-    email: String
-    rentalSpots: [ParkingSpot]
-    renteeSpots: [ParkingSpotRental]
-    history: [ParkingSpotRental]
+    _id: ID!
+    userName: String!
+    password: String!
+    email: String!
     biography: String
+    rentalSpots: [ParkingSpot]
+    renteeSpots: [ParkingSpot]
+    history: [ParkingRental]
   }
 
-  
   type Mutation {
     createUser(input: UserInput!): User
     login(email: String!, password: String!): Auth
@@ -45,13 +53,13 @@ const typeDefs = gql`
     createParkingSpot(input: ParkingSpotInput!): ParkingSpot
     updateParkingSpot(_id: ID!, input: ParkingSpotInput!): ParkingSpot
     deleteParkingSpot(_id: ID!): ParkingSpot
-    createParkingRental(input: ParkingRentalInput!): ParkingSpotRental
-    deleteParkingRental(_id: ID!): ParkingSpotRental
-    }
-    `;
-    
-    // type Auth {
-    // token: ID!
-    // user: User
-    // }
+    createParkingRental(input: ParkingRentalInput!): ParkingRental
+    deleteParkingRental(_id: ID!): ParkingRental
+  }
+`;
+
+// type Auth {
+// token: ID!
+// user: User
+// }
 module.exports = typeDefs;
