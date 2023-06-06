@@ -1,6 +1,10 @@
 const { gql } = require("apollo-server-express");
 
+// image: String
+//I used to belong in ParkingSpot
+
 const typeDefs = gql`
+  scalar Date
   type ParkingSpot {
     _id: ID!
     name: String!
@@ -8,7 +12,6 @@ const typeDefs = gql`
     owner: User!
     streetAddress: String!
     zipcode: String!
-    image: String
     pricebyday: Int!
     active: Boolean!
     dateStart: String!
@@ -22,24 +25,25 @@ const typeDefs = gql`
     saturday: Boolean
   }
 
-  type ParkingSpotRental {
-    _id: ID
-    owner: User
-    rentee: User
-    dateBookedStart: String
-    dateBookedEnd: String
-    pricePaid: Intz
-    active: Boolean
+  type ParkingRental {
+    _id: ID!
+    owner: User!
+    rentee: User!
+    dateBookedStart: Date!
+    dateBookedEnd: Date!
+    pricePaid: Int!
+    active: Boolean!
   }
 
   type User {
-    _id: ID
-    userName: String
-    email: String
-    rentalSpots: [ParkingSpot]
-    renteeSpots: [ParkingSpotRental]
-    history: [ParkingSpotRental]
+    _id: ID!
+    userName: String!
+    password: String!
+    email: String!
     biography: String
+    rentalSpots: [ParkingSpot]
+    renteeSpots: [ParkingSpot]
+    history: [ParkingRental]
   }
 
   type Mutation {
@@ -49,8 +53,8 @@ const typeDefs = gql`
     createParkingSpot(input: ParkingSpotInput!): ParkingSpot
     updateParkingSpot(_id: ID!, input: ParkingSpotInput!): ParkingSpot
     deleteParkingSpot(_id: ID!): ParkingSpot
-    createParkingRental(input: ParkingRentalInput!): ParkingSpotRental
-    deleteParkingRental(_id: ID!): ParkingSpotRental
+    createParkingRental(input: ParkingRentalInput!): ParkingRental
+    deleteParkingRental(_id: ID!): ParkingRental
   }
 `;
 
