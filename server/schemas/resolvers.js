@@ -37,8 +37,9 @@ const resolvers = {
   Query: {
     //Finds all users
     user: async (parent, { id }) => {
-      return User.find({});
-      // return User.findById(id);
+      // return User.find({});
+      return User.findById(id);
+      // return null;
     },
     //Finds all parkingSpots
     parkingSpot: async () => {

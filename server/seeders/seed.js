@@ -1,10 +1,10 @@
-const db = require('../config/connection');
-const {  User, ParkingSpot, ParkingRental } = require('../models');
-const userSeeds = require('./userSeeds.json');
-const parkingSpotSeeds = require('./parkingSpotSeeds.json');
-const parkingRentalSeeds = require('./parkingRentalSeeds.json');
+const db = require("../config/connection");
+const { User, ParkingSpot, ParkingRental } = require("../models");
+const userSeeds = require("./userSeeds.json");
+const parkingSpotSeeds = require("./parkingSpotSeeds.json");
+const parkingRentalSeeds = require("./parkingRentalSeeds.json");
 
-db.once('open', async () => {
+db.once("open", async () => {
   try {
     await ParkingRental.deleteMany({});
     await ParkingSpot.deleteMany({});
@@ -29,6 +29,6 @@ db.once('open', async () => {
     process.exit(1);
   }
 
-  console.log('all done!');
+  console.log("all done!");
   process.exit(0);
 });
