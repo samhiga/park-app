@@ -1,77 +1,88 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from './SignupForm';
-import LoginForm from './LoginForm';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalBody,
+} from "mdb-react-ui-kit";
+import SignUpForm from "./SignupForm";
+import LoginForm from "./LoginForm";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
-const AppNavbar = () => {
-  // set modal display state
+const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => setShowModal(false);
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
-        <Container fluid>
-          <Navbar.Brand as={Link} to='/'>
-            Google Books Search
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls='navbar' />
-          <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
-            <Nav className='ml-auto d-flex'>
-              <Nav.Link as={Link} to='/'>
-                Search For Books
-              </Nav.Link>
-              {/* if user is logged in show saved books and logout */}
-              {Auth.loggedIn() ? (
-                <>
-                  <Nav.Link as={Link} to='/saved'>
-                    See Your Books
-                  </Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                </>
-              ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      {/* set modal data up */}
-      <Modal
-        size='lg'
-        show={showModal}
-        onHide={() => setShowModal(false)}
-        aria-labelledby='signup-modal'>
-        {/* tab container to do either signup or login component */}
-        <Tab.Container defaultActiveKey='login'>
-          <Modal.Header closeButton>
-            <Modal.Title id='signup-modal'>
-              <Nav variant='pills'>
-                <Nav.Item>
-                  <Nav.Link eventKey='login'>Login</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey='signup'>Sign Up</Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Tab.Content>
-              <Tab.Pane eventKey='login'>
-                <LoginForm handleModalClose={() => setShowModal(false)} />
-              </Tab.Pane>
-              <Tab.Pane eventKey='signup'>
-                <SignUpForm handleModalClose={() => setShowModal(false)} />
-              </Tab.Pane>
-            </Tab.Content>
-          </Modal.Body>
-        </Tab.Container>
-      </Modal>
+      <MDBNavbar expand="lg" light bgColor="light">
+        <MDBNavbarBrand href="#">Parking App</MDBNavbarBrand>
+
+        <MDBNavbarNav className="justify-content-end">
+          <MDBNavItem>
+            <Link to="/">
+              <MDBNavLink active aria-current="page">
+                Home
+              </MDBNavLink>
+            </Link>
+          </MDBNavItem>
+          <MDBNavItem>
+            <Link to="/browse">
+              <MDBNavLink>Browse</MDBNavLink>
+            </Link>
+          </MDBNavItem>
+          <MDBNavItem>
+            <Link to="/list">
+              <MDBNavLink>List a Spot</MDBNavLink>
+            </Link>
+          </MDBNavItem>
+          {Auth.loggedIn() ? (
+            <>
+              <MDBNavItem>
+                <Link to="/saved">
+                  <MDBNavLink>See Your Spots</MDBNavLink>
+                </Link>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink onClick={Auth.logout}>Logout</MDBNavLink>
+              </MDBNavItem>
+            </>
+          ) : (
+            <MDBNavItem>
+              <MDBNavLink onClick={() => setShowModal(true)}>
+                Login/Sign Up
+              </MDBNavLink>
+            </MDBNavItem>
+          )}
+        </MDBNavbarNav>
+      </MDBNavbar>
+
+      {showModal && (
+        <MDBModal show={showModal} onHide={closeModal}>
+          <MDBModalDialog>
+            <MDBModalContent>
+              <MDBModalHeader>Login/Sign Up</MDBModalHeader>
+              <MDBModalBody>
+                {/* Render your login/signup form here */}
+                <LoginForm closeModal={closeModal} />
+                {/* or */}
+                <SignUpForm closeModal={closeModal} />
+              </MDBModalBody>
+            </MDBModalContent>
+          </MDBModalDialog>
+        </MDBModal>
+      )}
     </>
   );
 };
 
-export default AppNavbar;
+export default Navbar;
