@@ -58,25 +58,25 @@ const ParkingSpotSchema = new Schema({
     required: true,
     //End Date E.G.: 06/30/2023
   },
-  Sunday: {
+  sunday: {
     type: Boolean,
   },
-  Monday: {
+  monday: {
     type: Boolean,
   },
-  Tuesday: {
+  tuesday: {
     type: Boolean,
   },
-  Wednesday: {
+  wednesday: {
     type: Boolean,
   },
-  Thursday: {
+  thursday: {
     type: Boolean,
   },
-  Friday: {
+  friday: {
     type: Boolean,
   },
-  Saturday: {
+  saturday: {
     type: Boolean,
   },
   //
