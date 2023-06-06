@@ -5,6 +5,11 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   scalar Date
+  type Query {
+    user(id: ID!): User
+    parkingSpot: ParkingSpot
+    parkingRental: ParkingRental
+  }
   type ParkingSpot {
     _id: ID!
     name: String!
@@ -45,19 +50,17 @@ const typeDefs = gql`
     renteeSpots: [ParkingSpot]
     history: [ParkingRental]
   }
-
-  type Mutation {
-    createUser(input: UserInput!): User
-    login(email: String!, password: String!): Auth
-    deleteUser(_id: ID!): User
-    createParkingSpot(input: ParkingSpotInput!): ParkingSpot
-    updateParkingSpot(_id: ID!, input: ParkingSpotInput!): ParkingSpot
-    deleteParkingSpot(_id: ID!): ParkingSpot
-    createParkingRental(input: ParkingRentalInput!): ParkingRental
-    deleteParkingRental(_id: ID!): ParkingRental
-  }
 `;
-
+// type Mutation {
+//   createUser(input: UserInput!): User
+//   login(email: String!, password: String!): Auth
+//   deleteUser(_id: ID!): User
+//   createParkingSpot(input: ParkingSpotInput!): ParkingSpot
+//   updateParkingSpot(_id: ID!, input: ParkingSpotInput!): ParkingSpot
+//   deleteParkingSpot(_id: ID!): ParkingSpot
+//   createParkingRental(input: ParkingRentalInput!): ParkingRental
+//   deleteParkingRental(_id: ID!): ParkingRental
+// }
 // type Auth {
 // token: ID!
 // user: User
