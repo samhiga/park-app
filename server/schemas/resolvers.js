@@ -1,4 +1,4 @@
-const { User, ParkingSpot, ParkingSpotRental } = require('../models');
+const { User, ParkingSpot, ParkingSpotRental } = require("../models");
 
 // make a query to find all of opur parking spots. homepage etc
 
