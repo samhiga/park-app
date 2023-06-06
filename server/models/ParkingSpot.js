@@ -33,34 +33,53 @@ const ParkingSpotSchema = new Schema({
     minlength: 5,
     maxlength: 10,
     required: true,
+    //Have a REGEX Verifier for zipcode
   },
   images: {
-    //Figure out how to insert images
+    type: String,
+    //Not required to upload a pic.
   },
   price: {
-    type: Double,
+    type: Number,
     required: true,
   },
   active: {
     type: Boolean,
+    required: true,
+    //Defaulted to "true"
   },
-  datesAvailable: {
-    type: String,
-    //Start date to end date: E.G: 06/05/2023-06/30/2023
-    //so a STRING?
+  dateStart: {
+    type: Date,
+    required: true,
+    //Start date  E.G: 06/05/2023
   },
-  datesUnavailable: [
-    {},
-    // {
-    //   Sunday: True,
-    //   Monday: True,
-    //   Tuesday: True,
-    //   Wednesday: True,
-    //   Thursday: True,
-    //   Friday: True,
-    //   Saturday: True,
-    // },
-  ],
+  dateEnd: {
+    type: Date,
+    required: true,
+    //End Date E.G.: 06/30/2023
+  },
+  Sunday: {
+    type: Boolean,
+  },
+  Monday: {
+    type: Boolean,
+  },
+  Tuesday: {
+    type: Boolean,
+  },
+  Wednesday: {
+    type: Boolean,
+  },
+  Thursday: {
+    type: Boolean,
+  },
+  Friday: {
+    type: Boolean,
+  },
+  Saturday: {
+    type: Boolean,
+  },
+  //
 });
 
 const ParkingSpot = model("ParkingSpot", ParkingSpotSchema);
