@@ -27,19 +27,19 @@ const userSchema = new Schema({
   },
   rentalSpots: [
     {
-      type: Schema.Types.ObjectID,
+      type: Schema.Types.ObjectId,
       ref: "ParkingSpot",
     },
   ],
   renteeSpots: [
     {
-      type: Schema.Types.ObjectID,
+      type: Schema.Types.ObjectId,
       ref: "ParkingSpot",
     },
   ],
   history: [
     {
-      type: Schema.Types.ObjectID,
+      type: Schema.Types.ObjectId,
       ref: "ParkingRental",
     },
   ],

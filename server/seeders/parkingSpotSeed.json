@@ -5,7 +5,7 @@
       "owner": "615f9b4f79fde5a520ad1e7e",
       "streetAddress": "123 Main St",
       "zipcode": "12345",
-      "price": 10.0,
+      "price": 10,
       "active": true,
       "dateStart": "2022-07-01T00:00:00.000Z",
       "dateEnd": "2022-07-31T23:59:59.000Z",
@@ -23,7 +23,7 @@
       "owner": "615f9b5079fde5a520ad1e7f",
       "streetAddress": "456 Elm St",
       "zipcode": "54321",
-      "price": 15.0,
+      "price": 15,
       "active": true,
       "dateStart": "2022-08-01T00:00:00.000Z",
       "dateEnd": "2022-08-31T23:59:59.000Z",
@@ -41,7 +41,7 @@
       "owner": "615f9b4f79fde5a520ad1e7e",
       "streetAddress": "789 Oak St",
       "zipcode": "67890",
-      "price": 20.0,
+      "price": 20,
       "active": true,
       "dateStart": "2022-09-01T00:00:00.000Z",
       "dateEnd": "2022-09-30T23:59:59.000Z",
@@ -54,4 +54,3 @@
       "saturday": true
     }
   ]
-  
