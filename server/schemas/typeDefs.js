@@ -5,11 +5,38 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   scalar Date
+
   type Query {
     user: [User]
     parkingSpot: [ParkingSpot]
     parkingRental: [ParkingRental]
+    me: User
   }
+
+  type Mutation {
+    createUser(email: String!, password: String!): User
+    deleteUser(_id: ID!): User
+    createParkingSpot(
+      name: String!
+      owner: String!
+      streetAddress: String!
+      zipcode: String!
+      price: String!
+      dateStart: Date!
+      dateEnd: Date!
+    ): ParkingSpot
+    updateParkingSpot(_id: ID!): ParkingSpot
+    deleteParkingSpot(_id: ID!): ParkingSpot
+    createParkingRental(
+      owner: String!
+      rentee: String!
+      dateBookedStart: Date
+      dateBookedEnd: Date!
+      pricePaid: Int!
+      active: Boolean!
+    ): ParkingRental
+  }
+
   type ParkingSpot {
     _id: ID!
     name: String!
@@ -51,16 +78,9 @@ const typeDefs = gql`
     history: [ParkingRental]
   }
 `;
-// type Mutation {
-//   createUser(input: UserInput!): User
-//   login(email: String!, password: String!): Auth
-//   deleteUser(_id: ID!): User
-//   createParkingSpot(input: ParkingSpotInput!): ParkingSpot
-//   updateParkingSpot(_id: ID!, input: ParkingSpotInput!): ParkingSpot
-//   deleteParkingSpot(_id: ID!): ParkingSpot
-//   createParkingRental(input: ParkingRentalInput!): ParkingRental
-//   deleteParkingRental(_id: ID!): ParkingRental
-// }
+//Add me to the mutation once Auths are in.
+// login(email: String!, password: String!): Auth
+
 // type Auth {
 // token: ID!
 // user: User
