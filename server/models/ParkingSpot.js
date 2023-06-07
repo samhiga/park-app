@@ -8,6 +8,7 @@ const ParkingSpotSchema = new Schema({
     trim: true,
     minlength: 1,
     maxlength: 256,
+    unique: true,
   },
   description: {
     type: String,
