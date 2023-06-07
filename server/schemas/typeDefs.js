@@ -6,9 +6,9 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   scalar Date
   type Query {
-    user(id: ID!): User
-    parkingSpot: ParkingSpot
-    parkingRental: ParkingRental
+    user: [User]
+    parkingSpot: [ParkingSpot]
+    parkingRental: [ParkingRental]
   }
   type ParkingSpot {
     _id: ID!
@@ -17,7 +17,7 @@ const typeDefs = gql`
     owner: User!
     streetAddress: String!
     zipcode: String!
-    pricebyday: Int!
+    price: Int!
     active: Boolean!
     dateStart: String!
     dateEnd: String!
@@ -42,7 +42,7 @@ const typeDefs = gql`
 
   type User {
     _id: ID!
-    userName: String!
+    username: String!
     password: String!
     email: String!
     biography: String

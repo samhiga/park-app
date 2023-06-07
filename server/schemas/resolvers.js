@@ -36,18 +36,21 @@ const dateScalar = new GraphQLScalarType({
 const resolvers = {
   Query: {
     //Finds all users
-    user: async (parent, { id }) => {
-      // return User.find({});
-      return User.findById(id);
-      // return null;
+    // user: async (parent, { id }) => {
+    //   // return User.find({});
+    //   return User.findById(id);
+    //   // return null;
+    // },
+    user: async () => {
+      return await User.find({});
     },
     //Finds all parkingSpots
     parkingSpot: async () => {
-      return ParkingSpot.find({});
+      return await ParkingSpot.find({});
     },
     //Finds all parkingRentals
     parkingRental: async (parent, { id }) => {
-      return ParkingRental.find({});
+      return await ParkingRental.find({});
       // return ParkingRental.findById(id);
     },
   },

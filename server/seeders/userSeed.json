@@ -3,18 +3,14 @@
     "username": "Brian Kernighan",
     "email": "bkernighan@techfriends.dev",
     "password": "password01",
-    "biography": "I am a computer scientist who worked at Bell Labs and helped create the C programming language.",
-    "rentalSpots": ["Parking Spot 1", "Parking Spot 2"
-    ]
+    "biography": "I am a computer scientist who worked at Bell Labs and helped create the C programming language."
 
   },
   {
     "username": "Ada Lovelace",
     "email": "ada@lovelace.com",
     "password": "password02",
-    "biography": "I am often considered the world's first computer programmer.",
-    "renteeSpots": ["Parking Spot 1"],
-    "parkingRental": ["Parking"]
+    "biography": "I am often considered the world's first computer programmer."
 
   },
   {
@@ -22,5 +18,11 @@
     "email": "grace@hopper.org",
     "password": "password03",
     "biography": "I was a pioneer in computer programming and helped develop the COBOL programming language."
+  },
+  {
+    "username": "Walter White",
+    "email": "Walter@meth.org",
+    "password": "doingMethIsCool",
+    "biography": "I am the one who Parks"
   }
 ]
