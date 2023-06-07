@@ -46,7 +46,7 @@ const ParkingSpotSchema = new Schema({
   },
   active: {
     type: Boolean,
-    required: true,
+    default: true,
     //Defaulted to "true"
   },
   dateStart: {
@@ -61,24 +61,31 @@ const ParkingSpotSchema = new Schema({
   },
   sunday: {
     type: Boolean,
+    default: true,
   },
   monday: {
     type: Boolean,
+    default: true,
   },
   tuesday: {
     type: Boolean,
+    default: true,
   },
   wednesday: {
     type: Boolean,
+    default: true,
   },
   thursday: {
     type: Boolean,
+    default: true,
   },
   friday: {
     type: Boolean,
+    default: true,
   },
   saturday: {
     type: Boolean,
+    default: true,
   },
   //
 });
