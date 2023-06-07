@@ -17,6 +17,7 @@ const SignupForm = () => {
     email: "",
     password: "",
   });
+  //remember to name ADD_User correctly in utils/mutations.js
   const [addUser, { error, data, loading }] = useMutation(ADD_USER);
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
