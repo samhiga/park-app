@@ -4,65 +4,67 @@ import {
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
+  MDBNavbarItem,
+  MDBNavbarLink,
   MDBModal,
   MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
   MDBModalBody,
 } from "mdb-react-ui-kit";
-import SignUpForm from "./SignupForm";
-import LoginForm from "./LoginForm";
-
-import Auth from "../utils/auth";
+// import SignUpForm from "./SignupForm";
+// import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
+// Removed unused import
+// import Auth from "../utils/auth";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
 
   const closeModal = () => setShowModal(false);
-
   return (
     <>
       <MDBNavbar expand="lg" light bgColor="light">
-        <MDBNavbarBrand href="#">Parking App</MDBNavbarBrand>
+        {/* Replace this with a walter white */}
+        <MDBNavbarBrand href="/">Parking App</MDBNavbarBrand>
 
         <MDBNavbarNav className="justify-content-end">
-          <MDBNavItem>
+          <MDBNavbarItem>
             <Link to="/">
-              <MDBNavLink active aria-current="page">
+              <MDBNavbarLink active aria-current="page">
                 Home
-              </MDBNavLink>
+              </MDBNavbarLink>
             </Link>
-          </MDBNavItem>
-          <MDBNavItem>
+          </MDBNavbarItem>
+          <MDBNavbarItem>
             <Link to="/browse">
-              <MDBNavLink>Browse</MDBNavLink>
+              <MDBNavbarLink>Browse</MDBNavbarLink>
             </Link>
-          </MDBNavItem>
-          <MDBNavItem>
+          </MDBNavbarItem>
+          <MDBNavbarItem>
             <Link to="/list">
-              <MDBNavLink>List a Spot</MDBNavLink>
+              <MDBNavbarLink>List a Spot</MDBNavbarLink>
             </Link>
-          </MDBNavItem>
-          {Auth.loggedIn() ? (
+          </MDBNavbarItem>
+          {/* Commented out because auth isn't used yet. */}
+          {/* {Auth.loggedIn() ? (
             <>
-              <MDBNavItem>
+              <MDBNavbarItem>
                 <Link to="/saved">
-                  <MDBNavLink>See Your Spots</MDBNavLink>
+                  <MDBNavbarLink>See Your Spots</MDBNavbarLink>
                 </Link>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink onClick={Auth.logout}>Logout</MDBNavLink>
-              </MDBNavItem>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink onClick={Auth.logout}>Logout</MDBNavbarLink>
+              </MDBNavbarItem>
             </>
-          ) : (
-            <MDBNavItem>
-              <MDBNavLink onClick={() => setShowModal(true)}>
-                Login/Sign Up
-              </MDBNavLink>
-            </MDBNavItem>
-          )}
+          ) : ( */}
+          <MDBNavbarItem>
+            <MDBNavbarLink onClick={() => setShowModal(true)}>
+              Login/Sign Up
+            </MDBNavbarLink>
+          </MDBNavbarItem>
+          {/* )} */}
         </MDBNavbarNav>
       </MDBNavbar>
 
@@ -73,9 +75,9 @@ const Navbar = () => {
               <MDBModalHeader>Login/Sign Up</MDBModalHeader>
               <MDBModalBody>
                 {/* Render your login/signup form here */}
-                <LoginForm closeModal={closeModal} />
+                <SignupForm closeModal={closeModal} />
                 {/* or */}
-                <SignUpForm closeModal={closeModal} />
+                {/* <SignUpForm closeModal={closeModal} /> */}
               </MDBModalBody>
             </MDBModalContent>
           </MDBModalDialog>

@@ -6,22 +6,29 @@ import {
   MDBCardText,
 } from "mdb-react-ui-kit";
 
-const SpotCard = ({ ParkingSpot }) => {
+export const ParkingSpotCard = ({ ParkingSpot }) => {
+  if (!ParkingSpot) {
+    return <h1>No Parking Spot found!</h1>;
+  }
+  //Add logic to parse the dateStarts and dateEnds.
+
   return (
-    <MDBCard style={{ maxWidth: "22rem" }}>
-      <MDBCardBody>
-        <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
-        <MDBCardText>
-          {`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}
-        </MDBCardText>
-        <MDBCardText>{ParkingSpot.pricebyday}</MDBCardText>
-        <MDBCardText>
-          {`${ParkingSpot.dateStart} - ${ParkingSpot.dateEnd}`}
-        </MDBCardText>
-        <MDBCardText>{ParkingSpot.description}</MDBCardText>
-      </MDBCardBody>
-    </MDBCard>
+    <div>
+      {
+        <MDBCard style={{ maxWidth: "22rem" }}>
+          <MDBCardBody>
+            <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
+            <MDBCardText>
+              {`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}
+            </MDBCardText>
+            <MDBCardText>{ParkingSpot.pricebyday}</MDBCardText>
+            <MDBCardText>
+              {`${ParkingSpot.dateStart} - ${ParkingSpot.dateEnd}`}
+            </MDBCardText>
+            <MDBCardText>{ParkingSpot.description}</MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
+      }
+    </div>
   );
 };
-
-export default SpotCard;
