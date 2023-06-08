@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -77,13 +77,14 @@ export const QUERY_ME = gql`
         dateStart
         dateEnd
         description
-    }
-    history {
+      }
+      history {
         _id
         owner
         dateBookedStart
         dateBookedEnd
         pricePaid
+      }
     }
   }
 `;
