@@ -1,6 +1,6 @@
 import React from "react";
 import ParkingSpotList from "../components/ParkingSpotList";
-import HelloWorld from "../components/fuckthisshit";
+// import HelloWorld from "../components/helloworld";
 // import { Link } from "react-router-dom";
 // import ParkingSpotCard from "../components/ParkingSpotCard";
 // import { useQuery } from "@apollo/client";
