@@ -6,6 +6,7 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      biography
       rentalSpots {
         _id
         name
@@ -56,6 +57,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      biography
       rentalSpots {
         _id
         name
@@ -66,6 +68,22 @@ export const QUERY_ME = gql`
         dateEnd
         description
       }
+      renteeSpots {
+        _id
+        name
+        streetAddress
+        zipcode
+        price
+        dateStart
+        dateEnd
+        description
+    }
+    history {
+        _id
+        owner
+        dateBookedStart
+        dateBookedEnd
+        pricePaid
     }
   }
 `;
