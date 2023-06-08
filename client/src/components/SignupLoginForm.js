@@ -245,7 +245,7 @@ import {
   MDBTabsLink,
   MDBTabsContent,
   MDBTabsPane,
-
+  MDBContainer,
 } from "mdb-react-ui-kit";
 
 // import { useMutation } from "@apollo/client";
@@ -253,52 +253,141 @@ import {
 // import { ADD_USER } from "../utils/mutations";
 
 const SignupForm = () => {
-  const [basicActive, setBasicActive] = useState("tab1");
-  const [showTab, setshowTab] = useState(false);
+  const [justifyActive, setJustifyActive] = useState("tab1");
 
-  const handleBasicClick = (value) => {
-    if (value === basicActive) {
+  const handleJustifyClick = (value) => {
+    if (value === justifyActive) {
       return;
     }
-    setshowTab(true);
-    setBasicActive(value);
+
+    setJustifyActive(value);
   };
 
+  //On change handler
+  //So that I can record my inputs and send them to the backend via a mutation of some kind.
+
   return (
-    <>
-      <MDBTabs pills className="mb-3">
+    <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+      <MDBTabs
+        pills
+        justify
+        className="mb-3 d-flex flex-row justify-content-between"
+      >
         <MDBTabsItem>
           <MDBTabsLink
-            onClick={() => handleBasicClick("tab1")}
-            active={basicActive === "tab1"}
+            onClick={() => handleJustifyClick("tab1")}
+            active={justifyActive === "tab1"}
           >
-            Tab 1
+            Login
           </MDBTabsLink>
         </MDBTabsItem>
         <MDBTabsItem>
           <MDBTabsLink
-            onClick={() => handleBasicClick("tab2")}
-            active={basicActive === "tab2"}
+            onClick={() => handleJustifyClick("tab2")}
+            active={justifyActive === "tab2"}
           >
-            Tab 2
-          </MDBTabsLink>
-        </MDBTabsItem>
-        <MDBTabsItem>
-          <MDBTabsLink
-            onClick={() => handleBasicClick("tab3")}
-            active={basicActive === "tab3"}
-          >
-            Tab 3
+            Register
           </MDBTabsLink>
         </MDBTabsItem>
       </MDBTabs>
-      {/* Render my stuff here */}
+
       <MDBTabsContent>
-        <MDBTabsPane show={basicActive === "tab1"}>Tab 1 content</MDBTabsPane>
-        <MDBTabsPane show={basicActive === "tab2"}>Tab 2 content</MDBTabsPane>
-        <MDBTabsPane show={basicActive === "tab3"}>Tab 3 content</MDBTabsPane>
+        <MDBTabsPane show={justifyActive === "tab1"}>
+          <MDBInput
+            wrapperClass="mb-4"
+            label="Email address"
+            id="form1"
+            type="email"
+          />
+          <MDBInput
+            wrapperClass="mb-4"
+            label="Password"
+            id="form2"
+            type="password"
+          />
+
+          <div className="d-flex justify-content-between mx-4 mb-4">
+            <MDBCheckbox
+              name="flexCheck"
+              value=""
+              id="flexCheckDefault"
+              label="Remember me"
+            />
+          </div>
+
+          <MDBBtn className="mb-4 w-100">Sign in</MDBBtn>
+          <p className="text-center">
+            Not a member? <a href="#!">Register</a>
+          </p>
+        </MDBTabsPane>
+
+        <MDBTabsPane show={justifyActive === "tab2"}>
+          <div className="text-center mb-3">
+            <p>Sign in with:</p>
+
+            <div
+              className="d-flex justify-content-between mx-auto"
+              style={{ width: "40%" }}
+            >
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="facebook-f" size="sm" />
+              </MDBBtn>
+
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="twitter" size="sm" />
+              </MDBBtn>
+
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="google" size="sm" />
+              </MDBBtn>
+
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="github" size="sm" />
+              </MDBBtn>
+            </div>
+
+            <p className="text-center mt-3">or:</p>
+          </div>
+
+          <MDBInput wrapperClass="mb-4" label="Name" id="form1" type="text" />
+          <MDBInput
+            wrapperClass="mb-4"
+            label="Username"
+            id="form1"
+            type="text"
+          />
+          <MDBInput wrapperClass="mb-4" label="Email" id="form1" type="email" />
+          <MDBInput
+            wrapperClass="mb-4"
+            label="Password"
+            id="form1"
+            type="password"
+          />
+
+          <MDBBtn className="mb-4 w-100">Sign up</MDBBtn>
+        </MDBTabsPane>
       </MDBTabsContent>
-    </>
+    </MDBContainer>
   );
 };
 export default SignupForm;

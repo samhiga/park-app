@@ -13,7 +13,7 @@ import Navbar from "./components/Navbar";
 // import LoginForm from "./components/LoginForm";
 // import HelloWorld from "./components/helloworld";
 import "mdb-react-ui-kit/dist/css/mdb.dark.min.css";
-import SignupForm from "./components/SignupForm";
+import SignupLoginForm from "./components/SignupLoginForm";
 
 // import Update from "./pages/Update";
 // import NoMatch from "./pages/NoMatch";
@@ -50,7 +50,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/" element={<LoginForm />} /> */}
-            <Route path="/" element={<SignupForm />} />
+            <Route path="/" element={<SignupLoginForm />} />
             {/* <Route path="/login" element={<Login />} />
 
             <Route path="/History" element={<History />} />
