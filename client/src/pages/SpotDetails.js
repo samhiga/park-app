@@ -2,12 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useQuery } from '@apollo/client';
-import { GET_PARKING_SPOT } from '../utils/queries';
+import { QUERY_SINGLE_PARKING_SPOT } from '../utils/queries';
 
 const SpotDetails = () => {
   const { spotId } = useParams();
-  const { loading, data } = useQuery(GET_PARKING_SPOT, {
-    variables: { spotId: parseInt(spotId) }
+  const { loading, data } = useQuery(QUERY_SINGLE_PARKING_SPOT, {
+    variables: { parkingSpotId: spotId }
   });
 
   if (loading) {
@@ -26,7 +26,7 @@ const SpotDetails = () => {
       <div className="container">
         <h2>{spot.name}</h2>
         <p>Description: {spot.description}</p>
-        <p>Owner: {spot.owner}</p>
+        <p>Owner: {spot.owner.username}</p>
         <p>Address: {spot.streetAddress}, {spot.zipcode}</p>
         <p>Price: {spot.price}</p>
         <p>Active: {spot.active ? "Yes" : "No"}</p>
