@@ -21,7 +21,6 @@ const SignupForm = () => {
   const [addUser, { error, data, loading }] = useMutation(ADD_USER);
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -35,9 +34,9 @@ const SignupForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
     try {
       let userData = await addUser({ variables: userFormData });
+      //note that order of properties in the object does not matter as long as they are correctly named to match the corresponding properties in the source object, i.e our mutation.
       const { token, user } = userData.data.addUser;
       Auth.login(token);
     } catch (err) {
