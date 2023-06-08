@@ -26,7 +26,9 @@ export const ADD_USER = gql`
   }
 `;
 
-import { gql } from '@apollo/client';
+export const UPDATE_USER = gql`
+  mutation updateUser (
+
 
 export const CREATE_PARKING_SPOT = gql`
   mutation CreateParkingSpot(
@@ -69,4 +71,70 @@ export const CREATE_PARKING_SPOT = gql`
     }
   }
 `;
+
+export const UPDATE_PARKING_SPOT = gql`
+  mutation UpdateParkingSpot(
+    $_id: ID!,
+    $name: String,
+    $description: String,
+    $owner: ID,
+    $streetAddress: String,
+    $zipcode: String,
+    $price: Int,
+    $active: Boolean,
+    $dateStart: String,
+    $dateEnd: String,
+    $sunday: Boolean,
+    $monday: Boolean,
+    $tuesday: Boolean,
+    $wednesday: Boolean,
+    $thursday: Boolean,
+    $friday: Boolean,
+    $saturday: Boolean
+  ) {
+    updateParkingSpot(
+      _id: $_id,
+      input: {
+        name: $name,
+        description: $description,
+        owner: $owner,
+        streetAddress: $streetAddress,
+        zipcode: $zipcode,
+        price: $price,
+        active: $active,
+        dateStart: $dateStart,
+        dateEnd: $dateEnd,
+        sunday: $sunday,
+        monday: $monday,
+        tuesday: $tuesday,
+        wednesday: $wednesday,
+        thursday: $thursday,
+        friday: $friday,
+        saturday: $saturday
+      }
+    ) {
+      _id
+      name
+      description
+      owner {
+        _id
+      }
+      streetAddress
+      zipcode
+      price
+      active
+      dateStart
+      dateEnd
+      sunday
+      monday
+      tuesday
+      wednesday
+      thursday
+      friday
+      saturday
+    }
+  }
+`;
+
+
 
