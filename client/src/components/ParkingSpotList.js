@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_PARKING_SPOTS } from "../utils/queries";
 import { ParkingSpotCard } from "../components/ParkingSpotCard";
-import { HelloWorld } from "../components/fuckthisshit";
+// import { HelloWorld } from "../components/helloworld";
 const ParkingSpotList = () => {
   const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
 

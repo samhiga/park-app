@@ -1,6 +1,4 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_PARKING_SPOTS } from "../utils/queries";
 import {
   MDBCard,
   MDBCardBody,
@@ -9,10 +7,10 @@ import {
 } from "mdb-react-ui-kit";
 
 export const ParkingSpotCard = ({ ParkingSpot }) => {
-  console.log(ParkingSpot);
-  // if (!ParkingSpot.length) {
-  //   return <h1>No Parking Spots found!</h1>;
-  // }
+  if (!ParkingSpot) {
+    return <h1>No Parking Spot found!</h1>;
+  }
+  //Add logic to parse the dateStarts and dateEnds.
 
   return (
     <div>
