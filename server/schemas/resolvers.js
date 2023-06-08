@@ -42,15 +42,15 @@ const resolvers = {
     //   // return null;
     // },
     user: async () => {
-      return await User.find({});
+      return User.find({});
     },
     //Finds all parkingSpots
     parkingSpot: async () => {
-      return await ParkingSpot.find({});
+      return ParkingSpot.find({});
     },
     //Finds all parkingRentals
     parkingRental: async (parent, { id }) => {
-      return await ParkingRental.find({});
+      return ParkingRental.find({});
       // return ParkingRental.findById(id);
     },
   },

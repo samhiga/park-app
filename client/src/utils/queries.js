@@ -23,7 +23,7 @@ export const QUERY_USER = gql`
 
 export const QUERY_PARKING_SPOTS = gql`
   query getParkingSpots {
-    parkingSpots {
+    parkingSpot {
       _id
       name
       streetAddress
