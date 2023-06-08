@@ -6,6 +6,8 @@ import {
   MDBCardText,
 } from "mdb-react-ui-kit";
 
+//This is each individual item.
+
 const SpotCard = ({ ParkingSpot }) => {
   return (
     <MDBCard style={{ maxWidth: "22rem" }}>
