@@ -1,4 +1,4 @@
-const jw = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 //heroku set environment variable  for secrets
 //show environment variables section for configuration, hidden by default
@@ -29,10 +29,9 @@ module.exports = {
     }
     return req;
     },
-    signToken: function ({ email, name, _id }) {
+    signToken: function ({ username, email, _id }) {
       const payload = { username, email, _id };
 
       return jwt.sign({ data: payload }, secret, { expiresIn: expiration});
     }
-  },
-};
+  };
