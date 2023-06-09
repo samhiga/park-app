@@ -18,8 +18,8 @@ const typeDefs = gql`
     zipcode: String!
     price: Int!
     active: Boolean!
-    dateStart: String!
-    dateEnd: String!
+    dateStart: Date!
+    dateEnd: Date!
     sunday: Boolean
     monday: Boolean
     tuesday: Boolean

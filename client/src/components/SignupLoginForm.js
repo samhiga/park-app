@@ -137,6 +137,7 @@ const SignupForm = () => {
     event.preventDefault();
     try {
       console.log("I got clicked!");
+      console.log(registerFormData);
       let { data } = await doRegisterFormData({
         variables: { ...registerFormData },
       });

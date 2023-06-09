@@ -63,6 +63,7 @@ const resolvers = {
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
       try {
+        console.log("I got called")
         const user = await User.create({ username, email, password });
         console.log("User is: ");
         console.log(user);
