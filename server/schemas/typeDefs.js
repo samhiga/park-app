@@ -2,7 +2,11 @@ const { gql } = require("apollo-server-express");
 
 // image: String
 //I used to belong in ParkingSpot
-
+//Add me back to typeMutation once you're ready.
+// deleteUser(_id: ID!): User
+// deleteUser(_id: ID!): User
+// deleteParkingSpot(_id: ID!): ParkingSpot
+// updateParkingSpot(_id: ID!): ParkingSpot
 const typeDefs = gql`
   scalar Date
 
@@ -14,23 +18,22 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(email: String!, password: String!): User
-    deleteUser(_id: ID!): User
+    createUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): User
     createParkingSpot(
       name: String!
       owner: String!
       streetAddress: String!
       zipcode: String!
-      price: String!
+      price: Int!
       dateStart: Date!
       dateEnd: Date!
     ): ParkingSpot
-    updateParkingSpot(_id: ID!): ParkingSpot
-    deleteParkingSpot(_id: ID!): ParkingSpot
+
     createParkingRental(
       owner: String!
       rentee: String!
-      dateBookedStart: Date
+      dateBookedStart: Date!
       dateBookedEnd: Date!
       pricePaid: Int!
       active: Boolean!
@@ -40,7 +43,7 @@ const typeDefs = gql`
   type ParkingSpot {
     _id: ID!
     name: String!
-    description: String!
+    description: String
     owner: User!
     streetAddress: String!
     zipcode: String!
@@ -61,15 +64,15 @@ const typeDefs = gql`
     _id: ID!
     owner: User!
     rentee: User!
-    dateBookedStart: Date!
-    dateBookedEnd: Date!
+    dateBookedStart: String!
+    dateBookedEnd: String!
     pricePaid: Int!
     active: Boolean!
   }
 
   type User {
     _id: ID!
-    username: String!
+    username: String
     password: String!
     email: String!
     biography: String
