@@ -116,12 +116,16 @@ const SignupForm = () => {
       });
       console.log("Response is: ");
       console.log(response);
+      //Log will return our user information RN. It should be returning AUTH.
+      //It's ready to setup with AUTH.
       if (!response.ok) {
         throw new Error("User was not found!");
       }
       // when tokens are implemented, turn me back on
       // const { token, user } = await response.json();
       console.log("User is: ");
+      console.log(response);
+      //Auth for logging in.
     } catch (err) {
       console.error(err);
       // setShowAlert(true);
@@ -136,12 +140,12 @@ const SignupForm = () => {
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log("I got clicked!");
-      console.log(registerFormData);
       let { data } = await doRegisterFormData({
         variables: { ...registerFormData },
       });
       console.log(data);
+      // Auth.login(data.addUser.token);
+      //Send our stuff to Auth, which will close the modal.
     } catch (err) {
       console.error(err);
     }
