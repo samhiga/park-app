@@ -17,10 +17,9 @@ import {
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 // import Auth from "../utils/auth";
-// import { ADD_USER } from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
 
 //remember to name ADD_User correctly in utils/mutations.js
-// const [addUser, { error, data, loading }] = useMutation(ADD_USER);
 
 // const [validated] = useState(false);
 
@@ -51,8 +50,22 @@ const SignupForm = () => {
   //Alerts for bad inputs, commented out for now.
   const [showAlert, setShowAlert] = useState(false);
   const [validated] = useState(false);
-  //
-  //TAB CODE
+  //STATES
+
+  const [userFormData, setUserFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [registerFormData, setRegisterFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  //MUTATIONS
+
+  //TAB CODE AND STATE
   const [tabActive, settabActive] = useState("Login");
 
   const handleTabClick = (value) => {
@@ -62,25 +75,35 @@ const SignupForm = () => {
 
     settabActive(value);
   };
-  //USER LOGIN CODE
-  const [login, { error, data }] = useMutation(LOGIN_USER);
-  const [userFormData, setUserFormData] = useState({
-    email: "",
-    password: "",
-  });
 
-  //Save inputs to usestate.
+  //USER LOGIN CODE MUTATION
+  const [login, { loginErr, loginData, loginLoading }] =
+    useMutation(LOGIN_USER);
+
+  //REGISTER USER CODE MUTATION
+
+  // const [
+  //   doRegisterFormData,
+  //   { registerErr, addRegisterData, registerLoading },
+  // ] = useMutation(ADD_USER);
+
+  //HANDLE LOGIN INPUT
 
   const handleLoginInputChange = (event) => {
     const { name, value } = event.target;
+
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  const sayHi = (event) => {
-    event.preventDefault();
-    console.log("Hi!");
+  //HANDLE REGISTER INPUT
+  const handleRegisterInputChange = (event) => {
+    const { name, value } = event.target;
+    //updates our register form state
+    setRegisterFormData({ ...registerFormData, [name]: value });
+    console.log(registerFormData);
   };
 
+  //HANDLE LOGIN SUBMIT
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -89,7 +112,7 @@ const SignupForm = () => {
     //   event.preventDefault();
     //   event.stopPropagation();
     // }
-    console.log("I got clicked!");
+
     try {
       const response = await login({
         variables: { ...userFormData },
@@ -112,11 +135,15 @@ const SignupForm = () => {
       password: "",
     });
   };
-  //On change handler
-  //So that I can record my inputs and send them to the backend via a mutation of some kind.
-
+  //HANDLE REGISTER SUBMIT
+  const handleRegisterSubmit = async (event) => {
+    event.preventDefault();
+    console.log("I got clicked!");
+  };
+  //JSX SECTION
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+      {/* TABS */}
       <MDBTabs
         pills
         justify
@@ -141,12 +168,14 @@ const SignupForm = () => {
       </MDBTabs>
 
       <MDBTabsContent>
+        {/* LOGIN PANE */}
+
         <MDBTabsPane show={tabActive === "Login"}>
           <form id="loginform" onSubmit={handleLoginSubmit}>
             <MDBInput
               name="email"
               label="Email address"
-              id="loginformInput"
+              id="loginform"
               type="email"
               onChange={handleLoginInputChange}
               value={userFormData.email}
@@ -155,7 +184,7 @@ const SignupForm = () => {
             <MDBInput
               name="password"
               label="Password"
-              id="loginformInputFormInput"
+              id="loginform"
               type="password"
               onChange={handleLoginInputChange}
               value={userFormData.password}
@@ -186,20 +215,41 @@ const SignupForm = () => {
           </MDBTabsLink>
         </MDBTabsPane>
 
-        <MDBTabsPane show={tabActive === "Register"}>
-          <MDBInput
-            label="Username"
-            id="usernameregisterformInput"
-            type="text"
-          />
-          <MDBInput label="Email" id="emailregisterformInput" type="email" />
-          <MDBInput
-            label="Password"
-            id="passwordregisterformInput"
-            type="password"
-          />
+        {/* REGISTRYPANE */}
 
-          <MDBBtn className="mb-4 w-100">Sign up</MDBBtn>
+        <MDBTabsPane show={tabActive === "Register"}>
+          <form id="registerform" onSubmit={handleRegisterSubmit}>
+            <MDBInput
+              name="username"
+              label="username"
+              id="registerform"
+              type="text"
+              onChange={handleRegisterInputChange}
+              value={registerFormData.username}
+            />
+
+            <MDBInput
+              name="email"
+              label="Email"
+              id="registerform"
+              type="email"
+              onChange={handleRegisterInputChange}
+              value={registerFormData.email}
+            />
+
+            <MDBInput
+              name="password"
+              label="Password"
+              id="registerform"
+              type="password"
+              onChange={handleRegisterInputChange}
+              value={registerFormData.password}
+            />
+
+            <MDBBtn className="mb-4 w-100" form="registerform">
+              Sign up
+            </MDBBtn>
+          </form>
         </MDBTabsPane>
       </MDBTabsContent>
     </MDBContainer>
