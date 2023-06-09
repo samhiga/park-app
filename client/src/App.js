@@ -15,7 +15,7 @@ import SpotDetails from "./pages/SpotDetails";
 // import HelloWorld from "./components/helloworld";
 import "mdb-react-ui-kit/dist/css/mdb.dark.min.css";
 import SignupLoginForm from "./components/SignupLoginForm";
-
+import CreateSpot from "./pages/CreateSpot";
 // import Update from "./pages/Update";
 // import NoMatch from "./pages/NoMatch";
 // import Login from "./pages/Login";
@@ -46,20 +46,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/" element={<LoginForm />} /> */}
-            <Route path="/" element={<SignupLoginForm />} />
-            <Route path="/spotdetails/:spotId" element={<SpotDetails />} />
-            {/* <Route path="/login" element={<Login />} />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<LoginForm />} /> */}
+          <Route path="/" element={<SignupLoginForm />} />
+          <Route path="/spotdetails/:spotId" element={<SpotDetails />} />
+          <Route path="/createaspot" element={<CreateSpot />} />
+          {/* <Route path="/login" element={<Login />} />
 
             <Route path="/History" element={<History />} />
             <Route path="/products/:id" element={<Detail />} />
             <Route path="*" element={<NoMatch />} /> */}
-          </Routes>
-        </div>
+        </Routes>
       </Router>
     </ApolloProvider>
   );

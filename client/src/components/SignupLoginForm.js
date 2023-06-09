@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import {
-  MDBRow,
-  MDBCol,
   MDBInput,
   MDBCheckbox,
   MDBBtn,
-  MDBIcon,
   MDBTabs,
   MDBTabsItem,
   MDBTabsLink,
