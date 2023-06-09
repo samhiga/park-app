@@ -62,10 +62,17 @@ const resolvers = {
   },
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+      try {
+        console.log("I got called")
+        const user = await User.create({ username, email, password });
+        console.log("User is: ");
+        console.log(user);
+        return user;
+      } catch (err) {
+        console.error(err);
+      }
       //Implement once signToken is in.
       // const token = signToken(user)
-      return user;
     },
     createParkingSpot: async (
       parent,

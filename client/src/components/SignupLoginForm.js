@@ -82,10 +82,7 @@ const SignupForm = () => {
 
   //REGISTER USER CODE MUTATION
 
-  // const [
-  //   doRegisterFormData,
-  //   { registerErr, addRegisterData, registerLoading },
-  // ] = useMutation(ADD_USER);
+  const [doRegisterFormData, { err, data }] = useMutation(ADD_USER);
 
   //HANDLE LOGIN INPUT
 
@@ -138,7 +135,16 @@ const SignupForm = () => {
   //HANDLE REGISTER SUBMIT
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
-    console.log("I got clicked!");
+    try {
+      console.log("I got clicked!");
+      console.log(registerFormData);
+      let { data } = await doRegisterFormData({
+        variables: { ...registerFormData },
+      });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
   //JSX SECTION
   return (
@@ -246,7 +252,11 @@ const SignupForm = () => {
               value={registerFormData.password}
             />
 
-            <MDBBtn className="mb-4 w-100" form="registerform">
+            <MDBBtn
+              className="mb-4 w-100"
+              form="registerform"
+              onSubmit={doRegisterFormData}
+            >
               Sign up
             </MDBBtn>
           </form>

@@ -15,14 +15,19 @@ export const LOGIN_USER = gql`
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     createUser(username: $username, email: $email, password: $password) {
-      user {
-        _id
-        username
-        email
-      }
+      _id
+      username
+      email
+      password
     }
   }
 `;
+// user {
+//   _id
+//   username
+//   email
+//   password
+// }
 //token
 export const CREATE_PARKING_SPOT = gql`
   mutation CreateParkingSpot(
