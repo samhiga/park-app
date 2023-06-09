@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import SpotDetails from "./pages/SpotDetails";
 // import LoginForm from "./components/LoginForm";
 // import HelloWorld from "./components/helloworld";
 import "mdb-react-ui-kit/dist/css/mdb.dark.min.css";
@@ -50,7 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/" element={<LoginForm />} /> */}
-            <Route path="/" element={<SignupLoginForm />} />
+            <Route path="/" element={<SignupForm />} />
             {/* <Route path="/login" element={<Login />} />
 
             <Route path="/History" element={<History />} />

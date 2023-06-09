@@ -9,6 +9,7 @@ const SpotDetails = () => {
   const { loading, data } = useQuery(QUERY_SINGLE_PARKING_SPOT, {
     variables: { parkingSpotId: spotId }
   });
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -19,6 +20,7 @@ const SpotDetails = () => {
   if (!spot) {
     return <div>Spot not found</div>;
   }
+
 
   return (
     <div>
