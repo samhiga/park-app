@@ -10,12 +10,16 @@ const SpotDetails = () => {
     variables: { parkingSpotId: spotId }
   });
   
-
+console.log(spotId);
+console.log(typeof spotId);
   if (loading) {
     return <div>Loading...</div>;
   }
 
   const spot = data?.parkingSpot;
+  
+  console.log(data);
+
 
   if (!spot) {
     return <div>Spot not found</div>;
