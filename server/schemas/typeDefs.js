@@ -14,6 +14,7 @@ const typeDefs = gql`
     user: [User]
     parkingSpot: [ParkingSpot]
     parkingRental: [ParkingRental]
+    getParkingSpot(_id: ID!): ParkingSpot
     me: User
   }
 
