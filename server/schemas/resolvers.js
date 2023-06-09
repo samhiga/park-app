@@ -53,42 +53,55 @@ const resolvers = {
       return await ParkingRental.find({});
       // return ParkingRental.findById(id);
     },
+    
   },
-  // Mutation: {
-  //   createUser: async (parent, { username, email, password }) => {
-  //     const user = await User.create({ username, email, password });
-  //     //Implement once signToken is in.
-  //     // const token = signToken(user)
-  //     return user;
-  //   },
-  //   createParkingSpot: async (parent, args) => {
-  //     const parkingSpot = await ParkingSpot.create(args);
-  //     return parkingSpot;
-  //   },
-  //   createParkingRental: async (parent, args) => {
-  //     const parkingRental = await ParkingRental.create(args);
-  //     return parkingRental;
-  //   },
-  //   login: async (parent, { email, password }) => {
-  //     const user = await User.findOne({ email });
-  //     if (!user) {
-  //       //REPLACE ME ONCE AUTHENTICATION ERRORS ARE IN!
-  //       console.log("User not found!");
-  //       // throw new AuthenticationError('No user found with this email address');
-  //     }
-  //     const correctPw = await user.isCorrectPassword(password);
+  Mutation: {
+    createUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      //Implement once signToken is in.
+      // const token = signToken(user)
+      return user;
+    },
+    createParkingSpot: async (
+      parent,
+      { name, owner, streetAddress, zipcode, price, active, dateStart, dateEnd }
+    ) => {
+      const parkingSpot = await ParkingSpot.create({
+        name,
+        owner,
+        streetAddress,
+        zipcode,
+        price,
+        active,
+        dateStart,
+        dateEnd,
+      });
+      return parkingSpot;
+    },
+    createParkingRental: async (parent, args) => {
+      const parkingRental = await ParkingRental.create(args);
+      return parkingRental;
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        //REPLACE ME ONCE AUTHENTICATION ERRORS ARE IN!
+        console.log("User not found!");
+        // throw new AuthenticationError('No user found with this email address');
+      }
+      const correctPw = await user.isCorrectPassword(password);
 
-  //     if (!correctPw) {
-  //       console.log("Password is not correct!");
-  //       // throw new AuthenticationError('Incorrect credentials');
-  //     }
-  //     //Use this once we're asble to sign tokens
+      if (!correctPw) {
+        console.log("Password is not correct!");
+        // throw new AuthenticationError('Incorrect credentials');
+      }
+      //Use this once we're asble to sign tokens
 
-  //     // const token = signToken(user);
-  //     return { user };
-  //     // return { token, user}
-  //   },
-  // },
+      // const token = signToken(user);
+      return { user };
+      // return { token, user}
+    },
+  },
 
   //Can use mongoose's populate - which will populate.
   //Or can optimize by specifying down beneath.

@@ -16,15 +16,13 @@ const ParkingSpotList = () => {
 
   //Add logic to map through our card data, feed that to create a parkingSpot, feed each iterationg into ParkingSpot on the ParkingSpotCard.
   return (
-    <MDBCol key={data._id} className = "min-vh-100 g-5 p-5 mb-4">
-        <MDBRow className="row-cols-1 row-cols-md-3 g-5 p-5 mb-4">
-      {cardData.map((data) => (
-          
-            <ParkingSpotCard ParkingSpot={data} />
-          
-            ))}
-    </MDBRow>
-            </MDBCol>
+    <MDBCol key={data._id} className="min-vh-100 g-5 p-5 mb-4">
+      <MDBRow className="row-cols-1 row-cols-md-3 g-5 p-5 mb-4">
+        {cardData.map((data) => (
+          <ParkingSpotCard ParkingSpot={data} />
+        ))}
+      </MDBRow>
+    </MDBCol>
   );
 };
 export default ParkingSpotList;

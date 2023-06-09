@@ -14,7 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 // import SignUpForm from "./SignupForm";
 // import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
+import SignupForm from "./SignupLoginForm";
 // Removed unused import
 // import Auth from "../utils/auth";
 
