@@ -22,7 +22,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_PARKING_SPOTS = gql`
-  query getParkingSpots {
+  query parkingSpot {
     parkingSpot {
       _id
       name
@@ -40,17 +40,16 @@ export const QUERY_SINGLE_PARKING_SPOT = gql`
   query getSingleParkingSpot($parkingSpotId: ID!) {
     parkingSpot(parkingSpotId: $parkingSpotId) {
       _id
-      name
-      streetAddress
-      zipcode
-      price
-      dateStart
-      dateEnd
-      description
     }
   }
 `;
-
+// name
+// streetAddress
+// zipcode
+// price
+// dateStart
+// dateEnd
+// description
 export const QUERY_ME = gql`
   query me {
     me {
