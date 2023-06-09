@@ -15,7 +15,7 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
   }
   // Add logic to parse the dateStarts and dateEnds.
   const spotDetailsPath = `/spotdetails/${ParkingSpot._id}`;
-  //spotdetails/:89237489237489
+  
 
   return (
     <Link to={spotDetailsPath}>
