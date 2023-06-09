@@ -57,7 +57,7 @@ const resolvers = {
       const params = _id ? { _id } : {};
       console.log("Params is: ");
       console.log(params);
-      return await ParkingSpot.findById(params);
+      return await ParkingSpot.findOne(params);
     },
   },
   Mutation: {
