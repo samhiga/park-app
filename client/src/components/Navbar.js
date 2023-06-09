@@ -37,15 +37,15 @@ const Navbar = () => {
             </Link>
           </MDBNavbarItem>
           <MDBNavbarItem>
-            <Link to="/browse">
-              <MDBNavbarLink>Browse</MDBNavbarLink>
+            <Link to="/createaspot">
+              <MDBNavbarLink>Host A Spot</MDBNavbarLink>
             </Link>
           </MDBNavbarItem>
-          <MDBNavbarItem>
+          {/* <MDBNavbarItem>
             <Link to="/list">
               <MDBNavbarLink>List a Spot</MDBNavbarLink>
             </Link>
-          </MDBNavbarItem>
+          </MDBNavbarItem> */}
           {/* Commented out because auth isn't used yet. */}
           {/* {Auth.loggedIn() ? (
             <>
