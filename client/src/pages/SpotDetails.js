@@ -2,19 +2,16 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useQuery } from "@apollo/client";
-import {
-  QUERY_SINGLE_PARKING_SPOT,
-  QUERY_PARKING_SPOTS,
-} from "../utils/queries";
+import { QUERY_SINGLE_PARKING_SPOT } from "../utils/queries";
 
 const SpotDetails = () => {
   const { spotId } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_PARKING_SPOT, {
-    variables: { parkingSpotId: spotId },
+    variables: { ID: spotId },
   });
 
   // const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
-
+  //I want to KNOW if mty query single parking spot is correct.
   console.log(data);
   console.log(spotId);
   console.log(typeof spotId);
