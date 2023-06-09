@@ -53,7 +53,12 @@ const resolvers = {
       return await ParkingRental.find({});
       // return ParkingRental.findById(id);
     },
-    
+    getSingleParkingSpot: async (parent, { _id }) => {
+      const params = _id ? { _id } : {};
+      console.log("Params is: ");
+      console.log(params);
+      return await ParkingSpot.findById(params);
+    },
   },
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
