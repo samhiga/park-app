@@ -101,9 +101,7 @@ const SignupForm = () => {
       }
       // when tokens are implemented, turn me back on
       // const { token, user } = await response.json();
-      const { user } = await response.json();
       console.log("User is: ");
-      console.log(user);
     } catch (err) {
       console.error(err);
       // setShowAlert(true);
@@ -172,14 +170,20 @@ const SignupForm = () => {
                 label="Remember me"
               />
             </div>
-            <MDBBtn className="mb-4 w-100" type="submit" form="loginform">
+            <MDBBtn
+              className="mb-4 w-100 text-center"
+              type="submit"
+              form="loginform"
+            >
               Sign in
             </MDBBtn>
           </form>
-
-          <p className="text-center">
-            Not a member? <a href="#!">Register</a>
-          </p>
+          <MDBTabsLink
+            onClick={() => handleTabClick("Register")}
+            active={tabActive === "Register"}
+          >
+            Not a memer? Register!
+          </MDBTabsLink>
         </MDBTabsPane>
 
         <MDBTabsPane show={tabActive === "Register"}>

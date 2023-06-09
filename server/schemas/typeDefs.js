@@ -9,43 +9,11 @@ const { gql } = require("apollo-server-express");
 // updateParkingSpot(_id: ID!): ParkingSpot
 const typeDefs = gql`
   scalar Date
-
-  type Query {
-    user: [User]
-    parkingSpot: [ParkingSpot]
-    parkingRental: [ParkingRental]
-    getSingleParkingSpot(_id: ID!): ParkingSpot
-    me: User
-  }
-
-  type Mutation {
-    createUser(username: String!, email: String!, password: String!): User
-    login(email: String!, password: String!): User
-    createParkingSpot(
-      name: String!
-      owner: String!
-      streetAddress: String!
-      zipcode: String!
-      price: Int!
-      dateStart: Date!
-      dateEnd: Date!
-    ): ParkingSpot
-
-    createParkingRental(
-      owner: String!
-      rentee: String!
-      dateBookedStart: Date!
-      dateBookedEnd: Date!
-      pricePaid: Int!
-      active: Boolean!
-    ): ParkingRental
-  }
-
   type ParkingSpot {
     _id: ID!
     name: String!
     description: String
-    owner: User!
+    owner: User
     streetAddress: String!
     zipcode: String!
     price: Int!
@@ -80,6 +48,36 @@ const typeDefs = gql`
     rentalSpots: [ParkingSpot]
     renteeSpots: [ParkingSpot]
     history: [ParkingRental]
+  }
+  type Query {
+    user: [User]
+    parkingSpot: [ParkingSpot]
+    parkingRental: [ParkingRental]
+    getSPP(_id: ID!): ParkingSpot
+    me: User
+  }
+
+  type Mutation {
+    createUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): User
+    createParkingSpot(
+      name: String!
+      owner: String!
+      streetAddress: String!
+      zipcode: String!
+      price: Int!
+      dateStart: Date!
+      dateEnd: Date!
+    ): ParkingSpot
+
+    createParkingRental(
+      owner: String!
+      rentee: String!
+      dateBookedStart: Date!
+      dateBookedEnd: Date!
+      pricePaid: Int!
+      active: Boolean!
+    ): ParkingRental
   }
 `;
 //Add me to the mutation once Auths are in.

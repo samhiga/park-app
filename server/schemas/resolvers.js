@@ -46,18 +46,18 @@ const resolvers = {
     },
     //Finds all parkingSpots
     parkingSpot: async () => {
-      return await ParkingSpot.find({});
+      return await ParkingSpot.find({}).populate("owner");
     },
     //Finds all parkingRentals
     parkingRental: async (parent, { id }) => {
       return await ParkingRental.find({});
       // return ParkingRental.findById(id);
     },
-    getSingleParkingSpot: async (parent, { _id }) => {
+    getSPP: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
       console.log("Params is: ");
       console.log(params);
-      return await ParkingSpot.findOne(params);
+      return await ParkingSpot.findOne(params).populate("owner");
     },
   },
   Mutation: {
