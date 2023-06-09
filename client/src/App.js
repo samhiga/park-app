@@ -52,6 +52,7 @@ function App() {
             <Route path="/" element={<Home />} />
             {/* <Route path="/" element={<LoginForm />} /> */}
             <Route path="/" element={<SignupLoginForm />} />
+            <Route path="/spotdetails/:spotId" element={<SpotDetails />} />
             {/* <Route path="/login" element={<Login />} />
 
             <Route path="/History" element={<History />} />
