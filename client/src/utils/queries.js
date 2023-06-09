@@ -37,8 +37,8 @@ export const QUERY_PARKING_SPOTS = gql`
 `;
 
 export const QUERY_SINGLE_PARKING_SPOT = gql`
-  query getSingleParkingSpot($parkingSpotId: ID!) {
-    parkingSpot(parkingSpotId: $parkingSpotId) {
+  query getSingleParkingSpot($ID: ID!) {
+    parkingSpot(ID: $ID) {
       _id
     }
   }
