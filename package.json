@@ -20,5 +20,8 @@
   "homepage": "https://github.com/samhiga/park-app#readme",
   "devDependencies": {
     "concurrently": "^8.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
