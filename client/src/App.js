@@ -16,6 +16,7 @@ import SpotDetails from "./pages/SpotDetails";
 import "mdb-react-ui-kit/dist/css/mdb.dark.min.css";
 import SignupLoginForm from "./components/SignupLoginForm";
 import CreateSpot from "./pages/CreateSpot";
+import History from "./pages/History";
 // import Update from "./pages/Update";
 // import NoMatch from "./pages/NoMatch";
 // import Login from "./pages/Login";
@@ -53,6 +54,7 @@ function App() {
           <Route path="/" element={<SignupLoginForm />} />
           <Route path="/spotdetails/:spotId" element={<SpotDetails />} />
           <Route path="/createaspot" element={<CreateSpot />} />
+          <Route path="/history" element={<History />} />
           {/* <Route path="/login" element={<Login />} />
 
             <Route path="/History" element={<History />} />
