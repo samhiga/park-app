@@ -17,6 +17,7 @@ import {
 import SignupForm from "./SignupLoginForm";
 // Removed unused import
 // import Auth from "../utils/auth";
+// let logo = require("../images/parkapplogo.png");
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,18 +25,18 @@ const Navbar = () => {
   const closeModal = () => setShowModal(false);
   return (
     <>
-      <MDBNavbar expand="lg" light bgColor="light">
+      <MDBNavbar expand="lg" light style={{ backgroundColor: "#0D47A1", height: '70px' }} className="p-3 mb-2 text-white">
         {/* Replace this with a walter white */}
-        <MDBNavbarBrand href="/">Parking App</MDBNavbarBrand>
+        <MDBNavbarBrand href="/"><span style={{ fontSize: '2.5rem', color: '#00B0FF' }}>P</span>arking App</MDBNavbarBrand>
 
         <MDBNavbarNav className="justify-content-end">
-          <MDBNavbarItem>
+          {/* <MDBNavbarItem>
             <Link to="/">
               <MDBNavbarLink active aria-current="page">
                 Home
               </MDBNavbarLink>
             </Link>
-          </MDBNavbarItem>
+          </MDBNavbarItem> */}
           <MDBNavbarItem>
             <Link to="/createaspot">
               <MDBNavbarLink>Host A Spot</MDBNavbarLink>

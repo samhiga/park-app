@@ -19,7 +19,7 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
 
   return (
     <Link to={spotDetailsPath}>
-    <MDBCard className="text-center h-100 mb-4 g-3 p-3 x-4 y-4" style={{ maxWidth: "22rem", backgroundColor: "#557793" }}>
+    <MDBCard className="text-center h-100 mb-4 g-3 p-3 x-4 y-4 text-white" style={{ maxWidth: "22rem", backgroundColor: "#1565C0" }}  t>
       <MDBCardBody>
         <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
         <MDBCardText>{`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}</MDBCardText>
