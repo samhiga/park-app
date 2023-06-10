@@ -1,22 +1,26 @@
 import React from "react";
-import ParkingSpotList from "../components/ParkingSpotList";
-// import { useQuery } from "@apollo/client";
-// import { QUERY_USER_PAST_PARKING_SPOTS } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../utils/queries";
+// import ParkingSpotList from "../components/ParkingSpotList";
+import { MDBCardBody, MDBCardText } from "mdb-react-ui-kit";
 
 const History = () => {
-//   const { loading, data } = useQuery(QUERY_USER_PAST_PARKING_SPOTS);
+  const { loading, data } = useQuery(QUERY_USER);
 
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-//   const userPastParkingSpots = data?.userPastParkingSpots || [];
+  const user = data?.user;
+  const userPastParkingSpots = user?.pastParkingSpots || [];
 
   return (
     <div>
       <div className="container">
-        <ParkingSpotList parkingSpots={[]} />
-        <p>Hello World</p>
+        <MDBCardBody>
+          <MDBCardText> {userPastParkingSpots} </MDBCardText>
+          <p>Hello World</p>
+        </MDBCardBody>
       </div>
     </div>
   );

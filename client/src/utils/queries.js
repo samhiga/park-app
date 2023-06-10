@@ -17,7 +17,7 @@ export const QUERY_USER = gql`
         dateEnd
         description
       }
-      pastParkingSpots: history {  // Add the new field here
+      pastParkingSpots: history {
         _id
         name
         streetAddress
