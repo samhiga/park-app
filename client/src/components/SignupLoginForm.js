@@ -11,12 +11,13 @@ import {
   MDBContainer,
 } from "mdb-react-ui-kit";
 
+//*import auth for login
+import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
-// import Auth from "../utils/auth";
-import { ADD_USER } from "../utils/mutations";
+import { LOGIN_USER, ADD_USER } from "../utils/mutations";
 
-//remember to name ADD_User correctly in utils/mutations.js
+//? Needed??
+// remember to name ADD_User correctly in utils/mutations.js
 
 // const [validated] = useState(false);
 
@@ -60,9 +61,9 @@ const SignupForm = () => {
     password: "",
   });
 
-  //MUTATIONS
+  //*MUTATIONS
 
-  //TAB CODE AND STATE
+  //*TAB CODE AND STATE
   const [tabActive, settabActive] = useState("Login");
 
   const handleTabClick = (value) => {
@@ -73,15 +74,15 @@ const SignupForm = () => {
     settabActive(value);
   };
 
-  //USER LOGIN CODE MUTATION
+  //*USER LOGIN CODE MUTATION
   const [login, { loginErr, loginData, loginLoading }] =
     useMutation(LOGIN_USER);
 
-  //REGISTER USER CODE MUTATION
+  //*REGISTER USER CODE MUTATION
 
   const [doRegisterFormData, { err, data }] = useMutation(ADD_USER);
 
-  //HANDLE LOGIN INPUT
+  //*HANDLE LOGIN INPUT
 
   const handleLoginInputChange = (event) => {
     const { name, value } = event.target;
@@ -89,64 +90,46 @@ const SignupForm = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  //HANDLE REGISTER INPUT
+  //*HANDLE REGISTER INPUT
   const handleRegisterInputChange = (event) => {
     const { name, value } = event.target;
     //updates our register form state
     setRegisterFormData({ ...registerFormData, [name]: value });
     console.log(registerFormData);
   };
-
-  //HANDLE LOGIN SUBMIT
+  //*HANDLE LOGIN SUBMIT
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    //when validity is implemented, turn me back on.
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-
     try {
-      const response = await login({
-        variables: { ...userFormData },
-      });
-      console.log("Response is: ");
-      console.log(response);
-      //Log will return our user information RN. It should be returning AUTH.
-      //It's ready to setup with AUTH.
-      if (!response.ok) {
+      const response = await login({ variables: { ...userFormData } });
+      if (response.errors) {
         throw new Error("User was not found!");
       }
-      // when tokens are implemented, turn me back on
-      // const { token, user } = await response.json();
-      console.log("User is: ");
-      console.log(response);
-      //Auth for logging in.
+      const { token, user } = response.data.login;
+      //todo: check token is correctly saved in local storage
+      Auth.login(token); //*Added login with token
     } catch (err) {
       console.error(err);
-      // setShowAlert(true);
+      setShowAlert(true);
     }
-    //Clear the form.
-    setUserFormData({
-      email: "",
-      password: "",
-    });
+    setUserFormData({ email: "", password: "" });
   };
-  //HANDLE REGISTER SUBMIT
+
+  //*HANDLE REGISTER SUBMIT
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     try {
-      let { data } = await doRegisterFormData({
+      const { data } = await doRegisterFormData({
         variables: { ...registerFormData },
       });
-      console.log(data);
-      // Auth.login(data.addUser.token);
-      //Send our stuff to Auth, which will close the modal.
+      const { token, user } = data.addUser;
+      //todo: check token is correctly saved in local storage
+      Auth.login(token); // *Added login with token
     } catch (err) {
       console.error(err);
     }
   };
+
   //JSX SECTION
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
