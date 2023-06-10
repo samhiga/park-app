@@ -48,6 +48,7 @@ const typeDefs = gql`
     rentalSpots: [ParkingSpot]
     renteeSpots: [ParkingSpot]
     history: [ParkingRental]
+    pastParkingSpots: [ParkingSpot]
   }
   type Query {
     user: [User]
@@ -55,6 +56,7 @@ const typeDefs = gql`
     parkingRental: [ParkingRental]
     getSPP(_id: ID!): ParkingSpot
     me: User
+    userPastParkingSpots: [ParkingSpot]
   }
 
   type Mutation {

@@ -17,6 +17,16 @@ export const QUERY_USER = gql`
         dateEnd
         description
       }
+      pastParkingSpots: history {
+        _id
+        name
+        streetAddress
+        zipcode
+        price
+        dateStart
+        dateEnd
+        description
+      }
     }
   }
 `;
