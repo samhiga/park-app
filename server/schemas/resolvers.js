@@ -59,6 +59,18 @@ const resolvers = {
       console.log(params);
       return await ParkingSpot.findOne(params).populate("owner");
     },
+    // Query user history
+    // update the resolver for the me query to include the history field as well to ensure that the user's past parking spots are populated when querying the me field
+    userPastParkingSpots: async (parent, args, context) => {
+      const userId = context.user._id; // Assuming you have authentication implemented and the user is available in the context
+      try {
+        const user = await User.findById(userId).populate("history");
+        return user.history; // Assuming the user's past parking spots are stored in the "history" field
+      } catch (err) {
+        console.error(err);
+        throw new Error("Failed to fetch user's past parking spots");
+      }
+    },
   },
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
