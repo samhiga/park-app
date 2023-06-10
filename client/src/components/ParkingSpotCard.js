@@ -16,6 +16,9 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
   // Add logic to parse the dateStarts and dateEnds.
   const spotDetailsPath = `/spotdetails/${ParkingSpot._id}`;
   
+  // change date to local time
+  const formattedDateStart = new Date(ParkingSpot.dateStart).toLocaleDateString();
+  const formattedDateEnd = new Date(ParkingSpot.dateEnd).toLocaleDateString();
 
   return (
     <Link to={spotDetailsPath}>
@@ -23,8 +26,8 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
       <MDBCardBody>
         <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
         <MDBCardText>{`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}</MDBCardText>
-        <MDBCardText>{ParkingSpot.pricebyday}</MDBCardText>
-        <MDBCardText>{`${ParkingSpot.dateStart} - ${ParkingSpot.dateEnd}`}</MDBCardText>
+        <MDBCardText>${ParkingSpot.price} Per Day</MDBCardText>
+        <MDBCardText>{`${formattedDateStart} - ${formattedDateEnd}`}</MDBCardText>
         <MDBCardText>{ParkingSpot.description}</MDBCardText>
       </MDBCardBody>
     </MDBCard>
