@@ -52,6 +52,9 @@ const SpotDetails = () => {
     return spot.price * days;
   };
 
+  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
+  const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
+
   return (
     <MDBContainer>
     <MDBCard>
@@ -65,8 +68,8 @@ const SpotDetails = () => {
           </p>
           <p>Price: {spot.price}</p>
           <p>Active: {spot.active ? "Yes" : "No"}</p>
-          <p>Date Start: {spot.dateStart}</p>
-          <p>Date End: {spot.dateEnd}</p>
+          <p>Date Start: {formattedDateStart}</p>
+          <p>Date End: {formattedDateEnd}</p>
           <p>Pick Start Date</p>
           <DatePicker
             label="Pick Start Date"
