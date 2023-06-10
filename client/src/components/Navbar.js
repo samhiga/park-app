@@ -42,6 +42,11 @@ const Navbar = () => {
               <MDBNavbarLink>Host A Spot</MDBNavbarLink>
             </Link>
           </MDBNavbarItem>
+          <MDBNavbarItem>
+            <Link to="/history">
+              <MDBNavbarLink>History</MDBNavbarLink>
+            </Link>
+          </MDBNavbarItem>
           {/* <MDBNavbarItem>
             <Link to="/list">
               <MDBNavbarLink>List a Spot</MDBNavbarLink>
