@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { QUERY_SINGLE_PARKING_SPOT } from "../utils/queries";
+import { MDBContainer, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn } from "mdb-react-ui-kit";
 
 const SpotDetails = () => {
   const { spotId } = useParams();
@@ -43,6 +44,7 @@ const SpotDetails = () => {
     });
   };
 
+  // calculate the total price of the rental based on how many days are chosen
   const calculatePrice = () => {
     const start = startDate.getTime();
     const end = endDate.getTime();
@@ -51,42 +53,46 @@ const SpotDetails = () => {
   };
 
   return (
-    <div>
-      <div className="container">
-        <h2>{spot.name}</h2>
-        <p>Description: {spot.description}</p>
-        <p>Owner: {spot.owner.username}</p>
-        <p>
-          Address: {spot.streetAddress}, {spot.zipcode}
-        </p>
-        <p>Price: {spot.price}</p>
-        <p>Active: {spot.active ? "Yes" : "No"}</p>
-        <p>Date Start: {spot.dateStart}</p>
-        <p>Date End: {spot.dateEnd}</p>
-        {/* <p>Schedule: {getScheduleString(spot)}</p> */}
-        <p>Pick Start Date</p>
-        <DatePicker
-          label="Pick Start Date"
-          name="startDate"
-          selected={startDate}
-          onChange={handleStartDateChange}
-          value={startDate}
-          required
-        />
-        <p>Pick End Date</p>
-        <DatePicker
-          name="endDate"
-          label="Pick End Date"
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          value={endDate}
-          minDate={startDate}
-          required
-        />
-        <p>Total Price: ${calculatePrice()}</p>
-      </div>
-    </div>
-  );
+    <MDBContainer>
+    <MDBCard>
+      <MDBCardBody>
+        <MDBCardTitle>{spot.name}</MDBCardTitle>
+        <MDBCardText>
+          <p>Description: {spot.description}</p>
+          <p>Owner: {spot.owner.username}</p>
+          <p>
+            Address: {spot.streetAddress}, {spot.zipcode}
+          </p>
+          <p>Price: {spot.price}</p>
+          <p>Active: {spot.active ? "Yes" : "No"}</p>
+          <p>Date Start: {spot.dateStart}</p>
+          <p>Date End: {spot.dateEnd}</p>
+          <p>Pick Start Date</p>
+          <DatePicker
+            label="Pick Start Date"
+            name="startDate"
+            selected={startDate}
+            onChange={handleStartDateChange}
+            value={startDate}
+            required
+          />
+          <p>Pick End Date</p>
+          <DatePicker
+            name="endDate"
+            label="Pick End Date"
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            value={endDate}
+            minDate={startDate}
+            required
+          />
+          <p>Total Price: ${calculatePrice()}</p>
+          <MDBBtn color="secondary">Rent Me</MDBBtn>
+        </MDBCardText>
+      </MDBCardBody>
+    </MDBCard>
+  </MDBContainer>
+);
 };
 
 // const getScheduleString = (spot) => {
