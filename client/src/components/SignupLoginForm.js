@@ -45,8 +45,8 @@ import { ADD_USER } from "../utils/mutations";
 
 const SignupForm = () => {
   //Alerts for bad inputs, commented out for now.
-  const [showAlert, setShowAlert] = useState(false);
-  const [validated] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
+  // const [validated] = useState(false);
   //STATES
 
   const [userFormData, setUserFormData] = useState({
