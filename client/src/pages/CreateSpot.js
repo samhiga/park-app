@@ -35,10 +35,10 @@ const CreateSpot = () => {
   const [formData, setformData] = useState({
     //add additional form data here
     name: "",
-    owner: "Farley",
     streetAddress: "",
     zipcode: "",
     price: "",
+    description: "Default Description",
     dateStart: new Date(),
     dateEnd: new Date(),
   });
@@ -47,18 +47,23 @@ const CreateSpot = () => {
   const [endDate, setEndDate] = useState(new Date());
   //   const [totalPrice, settotalPrice] = useState(0);
   //Mutation to push info to
-  const [createParkingSpot, { error }] = useMutation(CREATE_PARKING_SPOT);
+  const [createParkingSpot, { muterror, data }] =
+    useMutation(CREATE_PARKING_SPOT);
 
   //Handle inputChange
   const HandleInputChange = (event) => {
     const { name, value } = event.target;
+    if (name === "price") {
+      console.log("It's the price!");
+      setformData({ ...formData, [name]: value.toString() });
+    }
     // console.log(event.target);
     setformData({ ...formData, [name]: value });
   };
 
   //Handle date changes
   const handleStartChange = (event) => {
-    const newStartDate = event;
+    const newStartDate = event.getTime();
     setStartDate(newStartDate);
 
     setformData((prevFormData) => ({
@@ -71,13 +76,13 @@ const CreateSpot = () => {
   //Also, it's hard to tell the event handler whether it's parent is for the end date or start date.
   //I know, it sucks. I want to fix it. There is no time.
   const handleEndChange = (event) => {
-    const newEndDate = event;
+    const newEndDate = event.getTime();
     //Save it to a variable, because setEnd date and setFormData are async events.
     setEndDate(newEndDate);
 
     setformData((prevFormData) => ({
       ...prevFormData,
-      dateStart: newEndDate,
+      dateEnd: newEndDate,
     }));
   };
 
@@ -103,7 +108,7 @@ const CreateSpot = () => {
       //Log will return our user information RN. It should be returning AUTH.
       //It's ready to setup with AUTH.
       if (!response.ok) {
-        throw new Error("User was not found!");
+        throw new Error("ParkingSpot was not found!");
       }
       // when tokens are implemented, turn me back on
       // const { token, user } = await response.json();
@@ -115,12 +120,6 @@ const CreateSpot = () => {
     //Clear the form.
     setformData({
       name: "",
-      owner: "Farley",
-      streetAddress: "",
-      zipcode: "",
-      price: "",
-      dateStart: new Date(),
-      dateEnd: new Date(),
     });
   };
 
@@ -156,6 +155,14 @@ const CreateSpot = () => {
             required
           />
           <MDBInput
+            name="description"
+            label="description"
+            id="Insert your description"
+            type="text"
+            onChange={HandleInputChange}
+            value={formData.description}
+          />
+          <MDBInput
             name="price"
             label="price"
             id="Insert how many dollars per day you are charging"
@@ -183,7 +190,7 @@ const CreateSpot = () => {
             value={formData.endDate}
             //min date is set to startDate so that the user cannot choose a date before our start date.
             minDate={startDate}
-            required
+            // required
           />
           <MDBBtn
             className="mb-4 w-100 text-center"

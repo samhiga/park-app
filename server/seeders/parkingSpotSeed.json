@@ -5,17 +5,10 @@
       "owner": "615f9b4f79fde5a520ad1e7e",
       "streetAddress": "123 Main St",
       "zipcode": "12345",
-      "price": 10,
+      "price": "10",
       "active": true,
       "dateStart": "2022-07-01T00:00:00.000Z",
-      "dateEnd": "2022-07-31T23:59:59.000Z",
-      "sunday": true,
-      "monday": true,
-      "tuesday": true,
-      "wednesday": true,
-      "thursday": true,
-      "friday": true,
-      "saturday": true
+      "dateEnd": "2022-07-31T23:59:59.000Z"
     },
     {
       "name": "Parking Spot 2",
@@ -23,17 +16,11 @@
       "owner": "615f9b5079fde5a520ad1e7f",
       "streetAddress": "456 Elm St",
       "zipcode": "54321",
-      "price": 15,
+      "price": "15",
       "active": true,
       "dateStart": "2022-08-01T00:00:00.000Z",
-      "dateEnd": "2022-08-31T23:59:59.000Z",
-      "sunday": true,
-      "monday": true,
-      "tuesday": true,
-      "wednesday": true,
-      "thursday": true,
-      "friday": true,
-      "saturday": true
+      "dateEnd": "2022-08-31T23:59:59.000Z"
+
     },
     {
       "name": "Parking Spot 3",
@@ -41,16 +28,9 @@
       "owner": "615f9b4f79fde5a520ad1e7e",
       "streetAddress": "789 Oak St",
       "zipcode": "67890",
-      "price": 20,
+      "price": "20",
       "active": true,
       "dateStart": "2022-09-01T00:00:00.000Z",
-      "dateEnd": "2022-09-30T23:59:59.000Z",
-      "sunday": true,
-      "monday": true,
-      "tuesday": true,
-      "wednesday": true,
-      "thursday": true,
-      "friday": true,
-      "saturday": true
+      "dateEnd": "2022-09-30T23:59:59.000Z"
     }
   ]
