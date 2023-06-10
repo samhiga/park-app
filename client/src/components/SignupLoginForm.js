@@ -97,7 +97,7 @@ const SignupForm = () => {
     setRegisterFormData({ ...registerFormData, [name]: value });
     console.log(registerFormData);
   };
-  //todo: check if auth works
+  //*HANDLE LOGIN SUBMIT
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -114,44 +114,6 @@ const SignupForm = () => {
     }
     setUserFormData({ email: "", password: "" });
   };
-  
-  //*HANDLE LOGIN SUBMIT original
-  // const handleLoginSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try{
-  //   const form = event.currentTarget;
-  //   //when validity is implemented, turn me back on.
-  //   // if (form.checkValidity() === false) {
-  //   //   event.preventDefault();
-  //   //   event.stopPropagation();
-  //   // }
-
-  //   try {
-  //     const response = await login({
-  //       variables: { ...userFormData },
-  //     });
-  //     console.log("Response is: ");
-  //     console.log(response);
-  //     //Log will return our user information RN. It should be returning AUTH.
-  //     //It's ready to setup with AUTH.
-  //     if (!response.ok) {
-  //       throw new Error("User was not found!");
-  //     }
-  //     // when tokens are implemented, turn me back on
-  //     // const { token, user } = await response.json();
-  //     console.log("User is: ");
-  //     console.log(response);
-  //     //Auth for logging in.
-  //   } catch (err) {
-  //     console.error(err);
-  //     // setShowAlert(true);
-  //   }
-  //   //Clear the form.
-  //   setUserFormData({
-  //     email: "",
-  //     password: "",
-  //   });
-  // };
 
   //*HANDLE REGISTER SUBMIT
   const handleRegisterSubmit = async (event) => {
