@@ -34,7 +34,7 @@ export const CREATE_PARKING_SPOT = gql`
     $owner: String!
     $streetAddress: String!
     $zipcode: String!
-    $price: String!
+    $price: Int!
     $dateStart: Date!
     $dateEnd: Date!
   ) {
@@ -46,27 +46,7 @@ export const CREATE_PARKING_SPOT = gql`
       price: $price
       dateStart: $dateStart
       dateEnd: $dateEnd
-    ) {
-      _id
-      name
-      owner {
-        _id
-        username
-      }
-      streetAddress
-      zipcode
-      price
-      active
-      dateStart
-      dateEnd
-      sunday
-      monday
-      tuesday
-      wednesday
-      thursday
-      friday
-      saturday
-    }
+    )
   }
 `;
 
