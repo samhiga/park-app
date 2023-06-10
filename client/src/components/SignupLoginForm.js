@@ -106,6 +106,7 @@ const SignupForm = () => {
         throw new Error("User was not found!");
       }
       const { token, user } = response.data.login;
+      //todo: check token is correctly saved in local storage
       Auth.login(token); //*Added login with token
     } catch (err) {
       console.error(err);
@@ -152,20 +153,21 @@ const SignupForm = () => {
   //   });
   // };
 
-  //HANDLE REGISTER SUBMIT
+  //*HANDLE REGISTER SUBMIT
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     try {
-      let { data } = await doRegisterFormData({
+      const { data } = await doRegisterFormData({
         variables: { ...registerFormData },
       });
-      console.log(data);
-      // Auth.login(data.addUser.token);
-      //Send our stuff to Auth, which will close the modal.
+      const { token, user } = data.addUser;
+      //todo: check token is correctly saved in local storage
+      Auth.login(token); // *Added login with token
     } catch (err) {
       console.error(err);
     }
   };
+
   //JSX SECTION
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
