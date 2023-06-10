@@ -39,6 +39,7 @@ const SpotDetails = () => {
         <p>Date Start: {spot.dateStart}</p>
         <p>Date End: {spot.dateEnd}</p>
         {/* <p>Schedule: {getScheduleString(spot)}</p> */}
+        <button type="button" class="btn btn-secondary">Rent Me</button>
       </div>
     </div>
   );
