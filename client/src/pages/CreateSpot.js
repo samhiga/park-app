@@ -38,7 +38,7 @@ const CreateSpot = () => {
     streetAddress: "",
     zipcode: "",
     price: "",
-    description: "Default Description",
+    description: "",
     dateStart: new Date().getTime(),
     dateEnd: new Date().getTime(),
     owner: "64850cccff1d568b3dd00a2f",
@@ -137,48 +137,54 @@ const CreateSpot = () => {
         <form id="createspotform" onSubmit={handleSubmit}>
           <MDBInput
             name="name"
-            label="Insert a name for your parking spot"
+            label="What would you like to name your parking spot?"
             id="createspotform"
             type="text"
             onChange={HandleInputChange}
             value={formData.name}
             required
           />
+          <div style={{ marginBottom: '1rem' }}></div>
           <MDBInput
             name="streetAddress"
-            label="Insert a name for your street address"
+            label="What is the street address of your parking spot?"
             id="createspotform"
             type="text"
             onChange={HandleInputChange}
             value={formData.streetAddress}
             required
           />
+          <div style={{ marginBottom: '1rem' }}></div>
           <MDBInput
             name="zipcode"
-            label="zipcode"
-            id="Insert your zipcode"
+            label="What is the zipcode of your parking spot?"
+            id="createspotform"
             type="text"
             onChange={HandleInputChange}
             value={formData.zipcode}
             required
           />
+          <div style={{ marginBottom: '1rem' }}></div>
           <MDBInput
             name="description"
-            label="description"
-            id="Insert your description"
+            label="Please write a description of your parking spot"
+            id="createspotform"
             type="text"
             onChange={HandleInputChange}
             value={formData.description}
+            required
           />
+          <div style={{ marginBottom: '1rem' }}></div>
           <MDBInput
             name="price"
-            label="price"
-            id="Insert how many dollars per day you are charging"
+            label="How much would you like to charge per day in USD?"
+            id="createspotform"
             type="number"
             onChange={HandleInputChange}
             value={formData.price}
             required
           />
+          <div style={{ marginBottom: '1rem' }}></div>
           <p> Pick Start Date </p>
           <DatePicker
             label="Pick Start Date"
@@ -200,6 +206,7 @@ const CreateSpot = () => {
             minDate={startDate}
             // required
           />
+          <div style={{ marginBottom: '1rem' }}></div>
           <MDBBtn
             className="mb-4 w-100 text-center"
             type="submit"
