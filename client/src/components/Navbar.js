@@ -15,6 +15,7 @@ import {
 // import SignUpForm from "./SignupForm";
 // import LoginForm from "./LoginForm";
 import SignupForm from "./SignupLoginForm";
+import "./Navbar.css";
 // Removed unused import
 // import Auth from "../utils/auth";
 // let logo = require("../images/parkapplogo.png");
@@ -25,7 +26,7 @@ const Navbar = () => {
   const closeModal = () => setShowModal(false);
   return (
     <>
-      <MDBNavbar expand="lg" light style={{ backgroundColor: "#0D47A1", height: '70px' }} className="p-3 mb-2 text-white">
+      <MDBNavbar expand="lg" light style={{ backgroundColor: "#0D47A1", height: '70px' }} className="p-3 mb-2 text-white shadow">
         {/* Replace this with a walter white */}
         <MDBNavbarBrand href="/"><span style={{ fontSize: '2.5rem', color: '#00B0FF' }}>P</span>ark App</MDBNavbarBrand>
 
@@ -39,12 +40,12 @@ const Navbar = () => {
           </MDBNavbarItem> */}
           <MDBNavbarItem>
             <Link to="/createaspot">
-              <MDBNavbarLink>Host A Spot</MDBNavbarLink>
+              <MDBNavbarLink className="hover">Host A Spot</MDBNavbarLink>
             </Link>
           </MDBNavbarItem>
           <MDBNavbarItem>
             <Link to="/history">
-              <MDBNavbarLink>History</MDBNavbarLink>
+              <MDBNavbarLink className="hover">History</MDBNavbarLink>
             </Link>
           </MDBNavbarItem>
           {/* <MDBNavbarItem>
@@ -66,7 +67,7 @@ const Navbar = () => {
             </>
           ) : ( */}
           <MDBNavbarItem>
-            <MDBNavbarLink onClick={() => setShowModal(true)}>
+            <MDBNavbarLink className ="hover" onClick={() => setShowModal(true)}>
               Login/Sign Up
             </MDBNavbarLink>
           </MDBNavbarItem>

@@ -138,7 +138,7 @@ const CreateSpot = () => {
   return (
     <div>
       <MDBContainer>
-      <MDBCard>
+      <MDBCard style={{ background: 'linear-gradient(90deg, rgba(69,69,69,1) 0%, rgba(89,89,91,1) 50%, rgba(69,69,69,1) 100%)' }}>
         <MDBCardBody style={{ padding: "20px" }}>
         <MDBCardTitle>Welcome To Create A Parking Spot!</MDBCardTitle>
         <MDBCardText>Just fill out the forms to start making money on your parking spot!</MDBCardText>
