@@ -23,6 +23,10 @@ import {
   MDBTabsContent,
   MDBTabsPane,
   MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
 } from "mdb-react-ui-kit";
 //TO DO:
 //Implement authorizations
@@ -134,6 +138,10 @@ const CreateSpot = () => {
   return (
     <div>
       <MDBContainer>
+      <MDBCard>
+        <MDBCardBody style={{ padding: "20px" }}>
+        <MDBCardTitle>Welcome To Create A Parking Spot!</MDBCardTitle>
+        <MDBCardText>Just fill out the forms to start making money on your parking spot!</MDBCardText>
         <form id="createspotform" onSubmit={handleSubmit}>
           <MDBInput
             name="name"
@@ -215,6 +223,8 @@ const CreateSpot = () => {
             Register your spot
           </MDBBtn>
         </form>
+        </MDBCardBody>
+        </MDBCard>
       </MDBContainer>
     </div>
   );
