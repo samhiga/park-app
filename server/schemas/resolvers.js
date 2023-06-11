@@ -1,13 +1,15 @@
-// const { AuthenticationError } = require('apollo-server-express');
-// const { signToken } = require("../utils/auth")
+const { AuthenticationError } = require("apollo-server-express");
 const { GraphQLScalarType, Kind } = require("graphql");
 const { User, ParkingSpot, ParkingRental } = require("../models");
+const { signToken } = require("../utils/auth");
 // make a query to find all of opur parking spots. homepage etc
 
 //Function associated with the custom scalar.
 // https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/
 //Give credit to snippet in README.
 //We got this from above
+
+//?do we need this?
 const dateScalar = new GraphQLScalarType({
   name: "Date",
   description: "Date custom scalar type",
@@ -35,12 +37,15 @@ const dateScalar = new GraphQLScalarType({
 
 const resolvers = {
   Query: {
-    //Finds all users
-    // user: async (parent, { id }) => {
-    //   // return User.find({});
-    //   return User.findById(id);
-    //   // return null;
-    // },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).select(
+          "-__v -password"
+        );
+        return userData;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
     user: async () => {
       return await User.find({});
     },
@@ -63,11 +68,12 @@ const resolvers = {
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
       try {
-        console.log("I got called")
+        console.log("I got called");
         const user = await User.create({ username, email, password });
+        const token = signToken(user); // generate token for the created user
         console.log("User is: ");
         console.log(user);
-        return user;
+        return { token, user }; // Include token in the response
       } catch (err) {
         console.error(err);
       }
@@ -97,21 +103,16 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        //REPLACE ME ONCE AUTHENTICATION ERRORS ARE IN!
-        console.log("User not found!");
-        // throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
+
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
-        console.log("Password is not correct!");
-        // throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
-      //Use this once we're asble to sign tokens
 
-      // const token = signToken(user);
-      return { user };
-      // return { token, user}
+      const token = signToken(user); // Generate token for the authenticated user
+      return { token, user }; // Include token in the response
     },
   },
 
