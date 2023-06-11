@@ -264,6 +264,7 @@ const SignupForm = () => {
               Sign up
             </MDBBtn>
           </form>
+          Already a memer? Login!
         </MDBTabsPane>
       </MDBTabsContent>
     </MDBContainer>
