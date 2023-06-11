@@ -26,9 +26,9 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
       <MDBCardBody>
         <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
         <MDBCardText>{`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}</MDBCardText>
-        <MDBCardText>${ParkingSpot.price} Per Day</MDBCardText>
         <MDBCardText>{`${formattedDateStart} - ${formattedDateEnd}`}</MDBCardText>
         <MDBCardText>{ParkingSpot.description}</MDBCardText>
+        <MDBCardText>${ParkingSpot.price} Per Day</MDBCardText>
       </MDBCardBody>
     </MDBCard>
     </Link>
