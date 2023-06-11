@@ -14,7 +14,10 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
-import moment from "moment";
+
+//TO DO: ADD IN MUTATION TO CREATURE A PARKING RENTAL SESSION
+//ADD IN AN EVENT FOR THE BUTTON CLICK TO TAKE IN OUR FORM DETAILS AND CREATE A SESSION BETWEEN THE OWNER AND USER (ME);
+//ALSO PUSH THE SESSION TO BOTH OWNER AND USERS HISTORIES
 
 const SpotDetails = () => {
   const { spotId } = useParams();
@@ -39,9 +42,6 @@ const SpotDetails = () => {
     spot.owner.username = "Username not found!";
   }
 
-  // const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
-  //I want to KNOW if my query single parking spot is correct.
-
   //LORD HELP ME FOR I HAVE SINNED
   const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
   const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
@@ -49,6 +49,7 @@ const SpotDetails = () => {
   let startdatemaxdate = new Date(endDate);
   let enddatemindate = new Date(startDate);
   //LORD HELP ME FOR I HAVE SINNED
+  //This works. I don't know exactly why. I am in a state of trance.
 
   const handleStartDateChange = (event) => {
     const newStartDate = event.getTime();
@@ -132,25 +133,4 @@ const SpotDetails = () => {
   );
 };
 
-// const getScheduleString = (spot) => {
-//   const days = [
-//     { label: "Sunday", value: spot.sunday },
-//     { label: "Monday", value: spot.monday },
-//     { label: "Tuesday", value: spot.tuesday },
-//     { label: "Wednesday", value: spot.wednesday },
-//     { label: "Thursday", value: spot.thursday },
-//     { label: "Friday", value: spot.friday },
-//     { label: "Saturday", value: spot.saturday },
-//   ];
-
-//   const activeDays = days.filter((day) => day.value);
-
-//   return activeDays.map((day) => day.label).join(", ");
-// };
-
 export default SpotDetails;
-
-//TO DO:
-//I need to "get" my end date, which is informed by spot.endDate
-//This value is in UNIX format, I need to create that into a new Date object with the inputted time.
-//I then I want to set that time to my max value on my button.
