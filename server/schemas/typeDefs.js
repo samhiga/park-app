@@ -39,7 +39,6 @@ const typeDefs = gql`
     email: String!
     biography: String
     rentalSpots: [ParkingSpot]
-    renteeSpots: [ParkingSpot]
     history: [ParkingRental]
     pastParkingSpots: [ParkingSpot]
   }
