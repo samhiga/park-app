@@ -261,7 +261,7 @@ const SignupForm = () => {
             <MDBBtn
               className="mb-4 w-100"
               form="registerform"
-              onSubmit={doRegisterFormData}
+              // ?onSubmit={doRegisterFormData} not needed becuase already handling form submission with the onSubmit attribute of the form itself?
             >
               Sign up
             </MDBBtn>
