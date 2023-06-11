@@ -31,41 +31,35 @@ export const ADD_USER = gql`
 export const CREATE_PARKING_SPOT = gql`
   mutation CreateParkingSpot(
     $name: String!
-    $owner: String!
     $streetAddress: String!
     $zipcode: String!
     $price: String!
     $dateStart: Date!
+    $description: String!
     $dateEnd: Date!
+    $owner: ID
   ) {
     createParkingSpot(
       name: $name
-      owner: $owner
       streetAddress: $streetAddress
       zipcode: $zipcode
       price: $price
       dateStart: $dateStart
+      description: $description
       dateEnd: $dateEnd
+      owner: $owner
     ) {
       _id
       name
-      owner {
-        _id
-        username
-      }
       streetAddress
       zipcode
       price
-      active
       dateStart
+      description
       dateEnd
-      sunday
-      monday
-      tuesday
-      wednesday
-      thursday
-      friday
-      saturday
+      owner {
+        _id
+      }
     }
   }
 `;

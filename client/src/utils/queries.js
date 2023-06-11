@@ -36,12 +36,13 @@ export const QUERY_PARKING_SPOTS = gql`
     parkingSpot {
       _id
       name
+      description
       streetAddress
       zipcode
       price
+      active
       dateStart
       dateEnd
-      description
     }
   }
 `;

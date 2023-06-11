@@ -75,7 +75,7 @@ const resolvers = {
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
       try {
-        console.log("I got called")
+        console.log("I got called");
         const user = await User.create({ username, email, password });
         console.log("User is: ");
         console.log(user);
@@ -88,19 +88,38 @@ const resolvers = {
     },
     createParkingSpot: async (
       parent,
-      { name, owner, streetAddress, zipcode, price, active, dateStart, dateEnd }
-    ) => {
-      const parkingSpot = await ParkingSpot.create({
+      {
         name,
-        owner,
         streetAddress,
         zipcode,
         price,
-        active,
         dateStart,
+        description,
         dateEnd,
-      });
-      return parkingSpot;
+        owner,
+      }
+    ) => {
+      try {
+        console.log("Creating parking spot on the backend.");
+        const parkingSpot = await ParkingSpot.create({
+          name,
+          streetAddress,
+          zipcode,
+          price,
+          dateStart,
+          description,
+          dateEnd,
+          owner,
+        });
+        console.log("parkingSpot is: ");
+        console.log(parkingSpot);
+        return parkingSpot;
+      } catch (err) {
+        console.log(
+          "oh no! we error'd on the server side for creating a parking spot!"
+        );
+        console.error(err);
+      }
     },
     createParkingRental: async (parent, args) => {
       const parkingRental = await ParkingRental.create(args);

@@ -10,27 +10,20 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   scalar Date
   type ParkingSpot {
-    _id: ID!
+    _id: ID
     name: String!
     description: String
-    owner: User
     streetAddress: String!
     zipcode: String!
-    price: Int!
-    active: Boolean!
-    dateStart: Date!
-    dateEnd: Date!
-    sunday: Boolean
-    monday: Boolean
-    tuesday: Boolean
-    wednesday: Boolean
-    thursday: Boolean
-    friday: Boolean
-    saturday: Boolean
+    price: String!
+    active: Boolean
+    dateStart: Date
+    dateEnd: Date
+    owner: User
   }
 
   type ParkingRental {
-    _id: ID!
+    _id: ID
     owner: User!
     rentee: User!
     dateBookedStart: String!
@@ -64,21 +57,20 @@ const typeDefs = gql`
     login(email: String!, password: String!): User
     createParkingSpot(
       name: String!
-      owner: String!
       streetAddress: String!
       zipcode: String!
-      price: Int!
+      price: String!
       dateStart: Date!
+      description: String
       dateEnd: Date!
+      owner: ID
     ): ParkingSpot
-
     createParkingRental(
       owner: String!
       rentee: String!
       dateBookedStart: Date!
       dateBookedEnd: Date!
       pricePaid: Int!
-      active: Boolean!
     ): ParkingRental
   }
 `;

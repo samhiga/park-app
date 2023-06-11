@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from "@apollo/client";
-
+// import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // import ParkingSpotCard from "../components/ParkingSpotCard";
 // import { useQuery } from "@apollo/client";
 // import { QUERY_PARKING_SPOTS } from "../utils/queries";
-
+//TO DO LIST
 import { CREATE_PARKING_SPOT } from "../utils/mutations";
 
 import {
@@ -24,46 +24,76 @@ import {
   MDBTabsPane,
   MDBContainer,
 } from "mdb-react-ui-kit";
-
+//TO DO:
+//Implement authorizations
+//Implement a checker so that the user cannot
+//Implement logic so that after the user submits, it brings us back to the homepage or their newly createdc spot.
 const CreateSpot = () => {
   //!!!!I might need to query "ME" to get our ID to associate it with our create parking spot.
 
-  //   let totalDays = 0;
   //Save our form information to the state
   const [formData, setformData] = useState({
     //add additional form data here
     name: "",
-    owner: "Farley",
     streetAddress: "",
     zipcode: "",
     price: "",
-    dateStart: "",
-    dateEnd: "",
+    description: "Default Description",
+    dateStart: new Date().getTime(),
+    dateEnd: new Date().getTime(),
+    owner: "64850cccff1d568b3dd00a2f",
   });
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   //   const [totalPrice, settotalPrice] = useState(0);
   //Mutation to push info to
-  const [createParkingSpot, { err, data }] = useMutation(CREATE_PARKING_SPOT);
+  const [createParkingSpot, { muterror, data }] =
+    useMutation(CREATE_PARKING_SPOT);
 
   //Handle inputChange
   const HandleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(name);
-    console.log(value);
+    if (name === "price") {
+      console.log("It's the price!");
+      setformData({ ...formData, [name]: value.toString() });
+    }
+    // console.log(event.target);
     setformData({ ...formData, [name]: value });
+  };
+
+  //Handle date changes
+  const handleStartChange = (event) => {
+    const newStartDate = event.getTime();
+    setStartDate(newStartDate);
+
+    setformData((prevFormData) => ({
+      ...prevFormData,
+      dateStart: newStartDate,
+    }));
+  };
+  //Set the end date for our end change.
+  //It's aseparate function because the date object does not contain a target,
+  //Also, it's hard to tell the event handler whether it's parent is for the end date or start date.
+  //I know, it sucks. I want to fix it. There is no time.
+  const handleEndChange = (event) => {
+    const newEndDate = event.getTime();
+    //Save it to a variable, because setEnd date and setFormData are async events.
+    setEndDate(newEndDate);
+
+    setformData((prevFormData) => ({
+      ...prevFormData,
+      dateEnd: newEndDate,
+    }));
   };
 
   //Handle the button Push
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setformData({ ...formData, dateStart: startDate });
-    setformData({ ...formData, dateEnd: endDate });
     console.log(formData);
-    const form = event.currentTarget;
-    console.log(form);
+    // const form = event.currentTarget;
+    // console.log(form);
     //when validity is implemented, turn me back on.
     // if (form.checkValidity() === false) {
     //   event.preventDefault();
@@ -79,12 +109,10 @@ const CreateSpot = () => {
       //Log will return our user information RN. It should be returning AUTH.
       //It's ready to setup with AUTH.
       if (!response.ok) {
-        throw new Error("User was not found!");
+        throw new Error("ParkingSpot was not found!");
       }
       // when tokens are implemented, turn me back on
       // const { token, user } = await response.json();
-      console.log("User is: ");
-      console.log(response);
       //Auth for logging in.
     } catch (err) {
       console.error(err);
@@ -92,21 +120,17 @@ const CreateSpot = () => {
     }
     //Clear the form.
     setformData({
-      email: "",
-      password: "",
+      name: "",
+      streetAddress: "",
+      zipcode: "",
+      price: "",
+      description: "Enter a description!",
+      dateStart: new Date().getTime(),
+      dateEnd: new Date().getTime(),
+      owner: "64850cccff1d568b3dd00a2f",
     });
   };
-  // Date Object
-  // //Accept some dates.
-  //   <MDBInput
-  //   name=""
-  //   label=""
-  //   id="createspotform"
-  //   type=""
-  //   onChange={HandleInputChange}
-  //   value={formData.}
-  //   required
-  // />
+
   return (
     <div>
       <MDBContainer>
@@ -139,6 +163,14 @@ const CreateSpot = () => {
             required
           />
           <MDBInput
+            name="description"
+            label="description"
+            id="Insert your description"
+            type="text"
+            onChange={HandleInputChange}
+            value={formData.description}
+          />
+          <MDBInput
             name="price"
             label="price"
             id="Insert how many dollars per day you are charging"
@@ -152,8 +184,9 @@ const CreateSpot = () => {
             label="Pick Start Date"
             name="startDate"
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            onChange={handleStartChange}
             value={formData.startDate}
+            minDate={new Date()}
             required
           />
           <p> Pick End Date </p>
@@ -161,9 +194,11 @@ const CreateSpot = () => {
             name="endDate"
             label="Pick End Date"
             selected={endDate}
-            onChange={(date) => setEndDate(date)}
+            onChange={handleEndChange}
             value={formData.endDate}
-            required
+            //min date is set to startDate so that the user cannot choose a date before our start date.
+            minDate={startDate}
+            // required
           />
           <MDBBtn
             className="mb-4 w-100 text-center"
