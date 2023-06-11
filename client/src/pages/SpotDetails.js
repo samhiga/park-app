@@ -4,7 +4,20 @@ import { useQuery } from "@apollo/client";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { QUERY_SINGLE_PARKING_SPOT } from "../utils/queries";
-import { MDBContainer, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import {
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBBtn,
+  MDBRow,
+  MDBCol,
+} from "mdb-react-ui-kit";
+
+//TO DO: ADD IN MUTATION TO CREATURE A PARKING RENTAL SESSION
+//ADD IN AN EVENT FOR THE BUTTON CLICK TO TAKE IN OUR FORM DETAILS AND CREATE A SESSION BETWEEN THE OWNER AND USER (ME);
+//ALSO PUSH THE SESSION TO BOTH OWNER AND USERS HISTORIES
 
 const SpotDetails = () => {
   const { spotId } = useParams();
@@ -14,9 +27,6 @@ const SpotDetails = () => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  // const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
-  //I want to KNOW if my query single parking spot is correct.
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,28 +42,38 @@ const SpotDetails = () => {
     spot.owner.username = "Username not found!";
   }
 
-  // function to set min end date to whatever user selects for start date
-  const handleStartDateChange = (date) => {
-    setStartDate(date);
-    // Update the minimum end date based on the selected start date
-    setEndDate((prevEndDate) => {
-      if (date > prevEndDate) {
-        return date;
-      }
-      return prevEndDate;
-    });
+  //LORD HELP ME FOR I HAVE SINNED
+  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
+  const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
+  let enddatemaxdate = new Date(spot.dateEnd);
+  let startdatemaxdate = new Date(endDate);
+  let enddatemindate = new Date(startDate);
+  //LORD HELP ME FOR I HAVE SINNED
+  //This works. I don't know exactly why. I am in a state of trance.
+
+  const handleStartDateChange = (event) => {
+    const newStartDate = event.getTime();
+    if (newStartDate > endDate) {
+      console.log(newStartDate);
+      console.log(endDate);
+    } else {
+      setStartDate(newStartDate);
+    }
+  };
+  const handleEndDateChange = (event) => {
+    const newEndDate = event.getTime();
+    setEndDate(newEndDate);
   };
 
   // calculate the total price of the rental based on how many days are chosen
   const calculatePrice = () => {
-    const start = startDate.getTime();
-    const end = endDate.getTime();
-    const days = (end - start) / (1000 * 3600 * 24);
-    return spot.price * days;
+    const start = startDate;
+    const end = endDate;
+    const days = (end - start) / (1000 * 3600 * 24) + 1;
+    return (spot.price * days).toFixed();
   };
 
-  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
-  const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
+  //spot returns the date in unix time.
 
   return (
     <MDBContainer>
@@ -87,6 +107,8 @@ const SpotDetails = () => {
                   selected={startDate}
                   onChange={handleStartDateChange}
                   value={startDate}
+                  minDate={new Date()}
+                  maxDate={startdatemaxdate}
                   required
                 />
                 <p>Park-out</p>
@@ -94,9 +116,10 @@ const SpotDetails = () => {
                   name="endDate"
                   label="Pick End Date"
                   selected={endDate}
-                  onChange={(date) => setEndDate(date)}
+                  onChange={handleEndDateChange}
                   value={endDate}
-                  minDate={startDate}
+                  minDate={enddatemindate}
+                  maxDate={enddatemaxdate}
                   required
                 />
                 <p>Total Price: ${calculatePrice()}</p>
@@ -108,23 +131,6 @@ const SpotDetails = () => {
       </MDBRow>
     </MDBContainer>
   );
-  
 };
-
-// const getScheduleString = (spot) => {
-//   const days = [
-//     { label: "Sunday", value: spot.sunday },
-//     { label: "Monday", value: spot.monday },
-//     { label: "Tuesday", value: spot.tuesday },
-//     { label: "Wednesday", value: spot.wednesday },
-//     { label: "Thursday", value: spot.thursday },
-//     { label: "Friday", value: spot.friday },
-//     { label: "Saturday", value: spot.saturday },
-//   ];
-
-//   const activeDays = days.filter((day) => day.value);
-
-//   return activeDays.map((day) => day.label).join(", ");
-// };
 
 export default SpotDetails;
