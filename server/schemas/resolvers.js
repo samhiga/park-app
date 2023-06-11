@@ -47,7 +47,7 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     user: async () => {
-      return await User.find({});
+      return await User.find({}).populate("rentalSpots").populate("history");
     },
     //Finds all parkingSpots
     parkingSpot: async () => {
@@ -55,7 +55,7 @@ const resolvers = {
     },
     //Finds all parkingRentals
     parkingRental: async (parent, { id }) => {
-      return await ParkingRental.find({});
+      return await ParkingRental.find({}).populate("owner").populate("rentee");
       // return ParkingRental.findById(id);
     },
     getSPP: async (parent, { _id }) => {
@@ -63,6 +63,18 @@ const resolvers = {
       console.log("Params is: ");
       console.log(params);
       return await ParkingSpot.findOne(params).populate("owner");
+    },
+    // Query user history
+    // update the resolver for the me query to include the history field as well to ensure that the user's past parking spots are populated when querying the me field
+    userPastParkingSpots: async (parent, args, context) => {
+      const userId = context.user._id; // Assuming you have authentication implemented and the user is available in the context
+      try {
+        const user = await User.findById(userId).populate("history");
+        return user.history; // Assuming the user's past parking spots are stored in the "history" field
+      } catch (err) {
+        console.error(err);
+        throw new Error("Failed to fetch user's past parking spots");
+      }
     },
   },
   Mutation: {
@@ -82,19 +94,38 @@ const resolvers = {
     },
     createParkingSpot: async (
       parent,
-      { name, owner, streetAddress, zipcode, price, active, dateStart, dateEnd }
-    ) => {
-      const parkingSpot = await ParkingSpot.create({
+      {
         name,
-        owner,
         streetAddress,
         zipcode,
         price,
-        active,
         dateStart,
+        description,
         dateEnd,
-      });
-      return parkingSpot;
+        owner,
+      }
+    ) => {
+      try {
+        console.log("Creating parking spot on the backend.");
+        const parkingSpot = await ParkingSpot.create({
+          name,
+          streetAddress,
+          zipcode,
+          price,
+          dateStart,
+          description,
+          dateEnd,
+          owner,
+        });
+        console.log("parkingSpot is: ");
+        console.log(parkingSpot);
+        return parkingSpot;
+      } catch (err) {
+        console.log(
+          "oh no! we error'd on the server side for creating a parking spot!"
+        );
+        console.error(err);
+      }
     },
     createParkingRental: async (parent, args) => {
       const parkingRental = await ParkingRental.create(args);

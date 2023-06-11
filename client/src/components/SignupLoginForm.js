@@ -11,13 +11,12 @@ import {
   MDBContainer,
 } from "mdb-react-ui-kit";
 
-//*import auth for login
-import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER, ADD_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../utils/mutations";
+// import Auth from "../utils/auth";
+import { ADD_USER } from "../utils/mutations";
 
-//? Needed??
-// remember to name ADD_User correctly in utils/mutations.js
+//remember to name ADD_User correctly in utils/mutations.js
 
 // const [validated] = useState(false);
 
@@ -61,9 +60,9 @@ const SignupForm = () => {
     password: "",
   });
 
-  //*MUTATIONS
+  //MUTATIONS
 
-  //*TAB CODE AND STATE
+  //TAB CODE AND STATE
   const [tabActive, settabActive] = useState("Login");
 
   const handleTabClick = (value) => {
@@ -74,15 +73,15 @@ const SignupForm = () => {
     settabActive(value);
   };
 
-  //*USER LOGIN CODE MUTATION
+  //USER LOGIN CODE MUTATION
   const [login, { loginErr, loginData, loginLoading }] =
     useMutation(LOGIN_USER);
 
-  //*REGISTER USER CODE MUTATION
+  //REGISTER USER CODE MUTATION
 
   const [doRegisterFormData, { err, data }] = useMutation(ADD_USER);
 
-  //*HANDLE LOGIN INPUT
+  //HANDLE LOGIN INPUT
 
   const handleLoginInputChange = (event) => {
     const { name, value } = event.target;
@@ -90,46 +89,64 @@ const SignupForm = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  //*HANDLE REGISTER INPUT
+  //HANDLE REGISTER INPUT
   const handleRegisterInputChange = (event) => {
     const { name, value } = event.target;
     //updates our register form state
     setRegisterFormData({ ...registerFormData, [name]: value });
     console.log(registerFormData);
   };
-  //*HANDLE LOGIN SUBMIT
+
+  //HANDLE LOGIN SUBMIT
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    //when validity is implemented, turn me back on.
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+
     try {
-      const response = await login({ variables: { ...userFormData } });
-      if (response.errors) {
+      const response = await login({
+        variables: { ...userFormData },
+      });
+      console.log("Response is: ");
+      console.log(response);
+      //Log will return our user information RN. It should be returning AUTH.
+      //It's ready to setup with AUTH.
+      if (!response.ok) {
         throw new Error("User was not found!");
       }
-      const { token, user } = response.data.login;
-      //todo: check token is correctly saved in local storage
-      Auth.login(token); //*Added login with token
+      // when tokens are implemented, turn me back on
+      // const { token, user } = await response.json();
+      console.log("User is: ");
+      console.log(response);
+      //Auth for logging in.
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      // setShowAlert(true);
     }
-    setUserFormData({ email: "", password: "" });
+    //Clear the form.
+    setUserFormData({
+      email: "",
+      password: "",
+    });
   };
-
-  //*HANDLE REGISTER SUBMIT
+  //HANDLE REGISTER SUBMIT
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await doRegisterFormData({
+      let { data } = await doRegisterFormData({
         variables: { ...registerFormData },
       });
-      const { token, user } = data.addUser;
-      //todo: check token is correctly saved in local storage
-      Auth.login(token); // *Added login with token
+      console.log(data);
+      // Auth.login(data.addUser.token);
+      //Send our stuff to Auth, which will close the modal.
     } catch (err) {
       console.error(err);
     }
   };
-
   //JSX SECTION
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -164,13 +181,14 @@ const SignupForm = () => {
           <form id="loginform" onSubmit={handleLoginSubmit}>
             <MDBInput
               name="email"
-              label="Email address"
+              label="Email Address"
               id="loginform"
               type="email"
               onChange={handleLoginInputChange}
               value={userFormData.email}
               required
             />
+            <div style={{ marginBottom: '1rem' }}></div>
             <MDBInput
               name="password"
               label="Password"
@@ -180,7 +198,7 @@ const SignupForm = () => {
               value={userFormData.password}
               required
             />
-
+            <div style={{ marginBottom: '.5rem' }}></div>
             <div className="d-flex justify-content-between mx-4 mb-4">
               <MDBCheckbox
                 name="flexCheck"
@@ -217,7 +235,7 @@ const SignupForm = () => {
               onChange={handleRegisterInputChange}
               value={registerFormData.username}
             />
-
+            <div style={{ marginBottom: '1rem' }}></div>
             <MDBInput
               name="email"
               label="Email"
@@ -227,6 +245,7 @@ const SignupForm = () => {
               value={registerFormData.email}
             />
 
+            <div style={{ marginBottom: '1rem' }}></div>
             <MDBInput
               name="password"
               label="Password"
@@ -236,6 +255,7 @@ const SignupForm = () => {
               value={registerFormData.password}
             />
 
+            <div style={{ marginBottom: '1rem' }}></div>
             <MDBBtn
               className="mb-4 w-100"
               form="registerform"

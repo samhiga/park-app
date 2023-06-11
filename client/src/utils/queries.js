@@ -17,6 +17,16 @@ export const QUERY_USER = gql`
         dateEnd
         description
       }
+      history {
+        _id
+        name
+        streetAddress
+        zipcode
+        price
+        dateStart
+        dateEnd
+        description
+      }
     }
   }
 `;
@@ -26,12 +36,13 @@ export const QUERY_PARKING_SPOTS = gql`
     parkingSpot {
       _id
       name
+      description
       streetAddress
       zipcode
       price
+      active
       dateStart
       dateEnd
-      description
     }
   }
 `;
@@ -70,16 +81,6 @@ export const QUERY_ME = gql`
       email
       biography
       rentalSpots {
-        _id
-        name
-        streetAddress
-        zipcode
-        price
-        dateStart
-        dateEnd
-        description
-      }
-      renteeSpots {
         _id
         name
         streetAddress
