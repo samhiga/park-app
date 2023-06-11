@@ -32,5 +32,192 @@
       "active": true,
       "dateStart": "2022-09-01T00:00:00.000Z",
       "dateEnd": "2022-09-30T23:59:59.000Z"
+    },
+    {
+      "name": "Pawsome Parking",
+      "description": "A convenient parking spot near downtown for cat lovers.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "123 Main St",
+      "zipcode": "12345",
+      "price": "10",
+      "active": true,
+      "dateStart": "2022-07-01T00:00:00.000Z",
+      "dateEnd": "2022-07-31T23:59:59.000Z"
+    },
+    {
+      "name": "Whisker's Haven",
+      "description": "A spacious parking spot with shade for cat owners.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "456 Elm St",
+      "zipcode": "54321",
+      "price": "15",
+      "active": true,
+      "dateStart": "2022-08-01T00:00:00.000Z",
+      "dateEnd": "2022-08-31T23:59:59.000Z"
+    },
+    {
+      "name": "Meow Undercover",
+      "description": "An underground parking spot with 24/7 security for cat enthusiasts.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "789 Oak St",
+      "zipcode": "67890",
+      "price": "20",
+      "active": true,
+      "dateStart": "2022-09-01T00:00:00.000Z",
+      "dateEnd": "2022-09-30T23:59:59.000Z"
+    },
+    {
+      "name": "Feline Retreat",
+      "description": "A cozy parking spot near the park for cat owners to relax.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "321 Maple Ave",
+      "zipcode": "54321",
+      "price": "12",
+      "active": true,
+      "dateStart": "2022-10-01T00:00:00.000Z",
+      "dateEnd": "2022-10-31T23:59:59.000Z"
+    },
+    {
+      "name": "Guarded Whiskers",
+      "description": "A secure parking spot with surveillance cameras for peace of mind.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "567 Pine St",
+      "zipcode": "67890",
+      "price": "18",
+      "active": true,
+      "dateStart": "2022-11-01T00:00:00.000Z",
+      "dateEnd": "2022-11-30T23:59:59.000Z"
+    },
+    {
+      "name": "Catnip Haven",
+      "description": "A prime parking spot near the shopping center for cat owners on the go.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "901 Cedar Ave",
+      "zipcode": "12345",
+      "price": "14",
+      "active": true,
+      "dateStart": "2022-12-01T00:00:00.000Z",
+      "dateEnd": "2022-12-31T23:59:59.000Z"
+    },
+    {
+      "name": "Cuddly Carpark",
+      "description": "A cozy parking spot for cat owners who enjoy snuggling with their furry friends.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "234 Spruce St",
+      "zipcode": "54321",
+      "price": "13",
+      "active": true,
+      "dateStart": "2023-01-01T00:00:00.000Z",
+      "dateEnd": "2023-01-31T23:59:59.000Z"
+    },
+    {
+      "name": "Cat's Corner",
+      "description": "A charming parking spot located in a cat-friendly neighborhood.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "567 Oak Ave",
+      "zipcode": "67890",
+      "price": "16",
+      "active": true,
+      "dateStart": "2023-02-01T00:00:00.000Z",
+      "dateEnd": "2023-02-28T23:59:59.000Z"
+    },
+    {
+      "name": "Purrfect Park",
+      "description": "A parking spot with a nearby park where your cat can enjoy the outdoors.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "890 Maple St",
+      "zipcode": "12345",
+      "price": "11",
+      "active": true,
+      "dateStart": "2023-03-01T00:00:00.000Z",
+      "dateEnd": "2023-03-31T23:59:59.000Z"
+    },
+    {
+      "name": "Catnap Oasis",
+      "description": "A peaceful parking spot for cat owners to take a relaxing catnap.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "123 Pine Ave",
+      "zipcode": "54321",
+      "price": "17",
+      "active": true,
+      "dateStart": "2023-04-01T00:00:00.000Z",
+      "dateEnd": "2023-04-30T23:59:59.000Z"
+    },
+    {
+      "name": "Paw Prints Parking",
+      "description": "A parking spot where your cat's paw prints will be celebrated.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "456 Oak St",
+      "zipcode": "67890",
+      "price": "19",
+      "active": true,
+      "dateStart": "2023-05-01T00:00:00.000Z",
+      "dateEnd": "2023-05-31T23:59:59.000Z"
+    },
+    {
+      "name": "Cat's Crossing",
+      "description": "A parking spot conveniently located near a pedestrian-friendly cat crossing.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "789 Maple Ave",
+      "zipcode": "12345",
+      "price": "13",
+      "active": true,
+      "dateStart": "2023-06-01T00:00:00.000Z",
+      "dateEnd": "2023-06-30T23:59:59.000Z"
+    },
+    {
+      "name": "Whisker's Retreat",
+      "description": "A retreat-like parking spot for cat owners to unwind and relax.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "234 Elm St",
+      "zipcode": "54321",
+      "price": "15",
+      "active": true,
+      "dateStart": "2023-07-01T00:00:00.000Z",
+      "dateEnd": "2023-07-31T23:59:59.000Z"
+    },
+    {
+      "name": "Purrfectly Secure",
+      "description": "A secure parking spot with advanced cat security measures.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "567 Cedar Ave",
+      "zipcode": "67890",
+      "price": "21",
+      "active": true,
+      "dateStart": "2023-08-01T00:00:00.000Z",
+      "dateEnd": "2023-08-31T23:59:59.000Z"
+    },
+    {
+      "name": "Cat's Delight",
+      "description": "A parking spot that will delight both you and your cat.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "890 Pine St",
+      "zipcode": "12345",
+      "price": "16",
+      "active": true,
+      "dateStart": "2023-09-01T00:00:00.000Z",
+      "dateEnd": "2023-09-30T23:59:59.000Z"
+    },
+    {
+      "name": "Catnap Haven",
+      "description": "A haven-like parking spot for cat owners to enjoy a peaceful catnap.",
+      "owner": "615f9b5079fde5a520ad1e7f",
+      "streetAddress": "123 Oak Ave",
+      "zipcode": "54321",
+      "price": "18",
+      "active": true,
+      "dateStart": "2023-10-01T00:00:00.000Z",
+      "dateEnd": "2023-10-31T23:59:59.000Z"
+    },
+    {
+      "name": "Paws and Park",
+      "description": "A parking spot located near a beautiful park perfect for cat owners.",
+      "owner": "615f9b4f79fde5a520ad1e7e",
+      "streetAddress": "456 Elm St",
+      "zipcode": "67890",
+      "price": "14",
+      "active": true,
+      "dateStart": "2023-11-01T00:00:00.000Z",
+      "dateEnd": "2023-11-30T23:59:59.000Z"
     }
   ]

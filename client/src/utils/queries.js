@@ -17,7 +17,7 @@ export const QUERY_USER = gql`
         dateEnd
         description
       }
-      pastParkingSpots: history {
+      history {
         _id
         name
         streetAddress
@@ -81,16 +81,6 @@ export const QUERY_ME = gql`
       email
       biography
       rentalSpots {
-        _id
-        name
-        streetAddress
-        zipcode
-        price
-        dateStart
-        dateEnd
-        description
-      }
-      renteeSpots {
         _id
         name
         streetAddress
