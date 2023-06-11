@@ -136,6 +136,7 @@ const SignupForm = () => {
   //HANDLE REGISTER SUBMIT
   const handleRegisterSubmit = async (event) => {
     event.preventDefault();
+    console.log("Form data before sending:", registerFormData);
     try {
       let { data } = await doRegisterFormData({
         variables: { ...registerFormData },
@@ -147,6 +148,7 @@ const SignupForm = () => {
       console.error(err);
     }
   };
+
   //JSX SECTION
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -188,7 +190,7 @@ const SignupForm = () => {
               value={userFormData.email}
               required
             />
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBInput
               name="password"
               label="Password"
@@ -198,7 +200,7 @@ const SignupForm = () => {
               value={userFormData.password}
               required
             />
-            <div style={{ marginBottom: '.5rem' }}></div>
+            <div style={{ marginBottom: ".5rem" }}></div>
             <div className="d-flex justify-content-between mx-4 mb-4">
               <MDBCheckbox
                 name="flexCheck"
@@ -235,7 +237,7 @@ const SignupForm = () => {
               onChange={handleRegisterInputChange}
               value={registerFormData.username}
             />
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBInput
               name="email"
               label="Email"
@@ -245,7 +247,7 @@ const SignupForm = () => {
               value={registerFormData.email}
             />
 
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBInput
               name="password"
               label="Password"
@@ -255,7 +257,7 @@ const SignupForm = () => {
               value={registerFormData.password}
             />
 
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBBtn
               className="mb-4 w-100"
               form="registerform"
