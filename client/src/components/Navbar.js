@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       <MDBNavbar expand="lg" light style={{ backgroundColor: "#0D47A1", height: '70px' }} className="p-3 mb-2 text-white">
         {/* Replace this with a walter white */}
-        <MDBNavbarBrand href="/"><span style={{ fontSize: '2.5rem', color: '#00B0FF' }}>P</span>arking App</MDBNavbarBrand>
+        <MDBNavbarBrand href="/"><span style={{ fontSize: '2.5rem', color: '#00B0FF' }}>P</span>ark App</MDBNavbarBrand>
 
         <MDBNavbarNav className="justify-content-end">
           {/* <MDBNavbarItem>
