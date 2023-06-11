@@ -46,7 +46,7 @@ const resolvers = {
     },
     //Finds all parkingSpots
     parkingSpot: async () => {
-      return await ParkingSpot.find({});
+      return await ParkingSpot.find({}).populate("owner");
     },
     //Finds all parkingRentals
     parkingRental: async (parent, { id }) => {
@@ -88,7 +88,16 @@ const resolvers = {
     },
     createParkingSpot: async (
       parent,
-      { name, streetAddress, zipcode, price, dateStart, description, dateEnd }
+      {
+        name,
+        streetAddress,
+        zipcode,
+        price,
+        dateStart,
+        description,
+        dateEnd,
+        owner,
+      }
     ) => {
       try {
         console.log("Creating parking spot on the backend.");
@@ -100,6 +109,7 @@ const resolvers = {
           dateStart,
           description,
           dateEnd,
+          owner,
         });
         console.log("parkingSpot is: ");
         console.log(parkingSpot);

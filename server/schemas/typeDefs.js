@@ -63,6 +63,7 @@ const typeDefs = gql`
       dateStart: Date!
       description: String
       dateEnd: Date!
+      owner: ID
     ): ParkingSpot
     createParkingRental(
       owner: String!

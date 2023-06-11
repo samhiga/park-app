@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 // import ParkingSpotCard from "../components/ParkingSpotCard";
 // import { useQuery } from "@apollo/client";
 // import { QUERY_PARKING_SPOTS } from "../utils/queries";
-
+//TO DO LIST
 import { CREATE_PARKING_SPOT } from "../utils/mutations";
 
 import {
@@ -39,8 +39,9 @@ const CreateSpot = () => {
     zipcode: "",
     price: "",
     description: "Default Description",
-    dateStart: new Date(),
-    dateEnd: new Date(),
+    dateStart: new Date().getTime(),
+    dateEnd: new Date().getTime(),
+    owner: "64850cccff1d568b3dd00a2f",
   });
 
   const [startDate, setStartDate] = useState(new Date());
@@ -120,6 +121,13 @@ const CreateSpot = () => {
     //Clear the form.
     setformData({
       name: "",
+      streetAddress: "",
+      zipcode: "",
+      price: "",
+      description: "Enter a description!",
+      dateStart: new Date().getTime(),
+      dateEnd: new Date().getTime(),
+      owner: "64850cccff1d568b3dd00a2f",
     });
   };
 

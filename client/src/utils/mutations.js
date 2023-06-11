@@ -37,6 +37,7 @@ export const CREATE_PARKING_SPOT = gql`
     $dateStart: Date!
     $description: String!
     $dateEnd: Date!
+    $owner: ID
   ) {
     createParkingSpot(
       name: $name
@@ -46,6 +47,7 @@ export const CREATE_PARKING_SPOT = gql`
       dateStart: $dateStart
       description: $description
       dateEnd: $dateEnd
+      owner: $owner
     ) {
       _id
       name
@@ -55,6 +57,9 @@ export const CREATE_PARKING_SPOT = gql`
       dateStart
       description
       dateEnd
+      owner {
+        _id
+      }
     }
   }
 `;
