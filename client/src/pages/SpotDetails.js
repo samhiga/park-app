@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { QUERY_SINGLE_PARKING_SPOT } from "../utils/queries";
 import { MDBContainer, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import moment from 'moment';
 
 const SpotDetails = () => {
   const { spotId } = useParams();
@@ -52,7 +53,7 @@ const SpotDetails = () => {
     return spot.price * days;
   };
 
-  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
+  // const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
   const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
 
   return (
@@ -69,7 +70,7 @@ const SpotDetails = () => {
                   Address: {spot.streetAddress}, {spot.zipcode}
                 </p>
                 <p>Active: {spot.active ? "Yes" : "No"}</p>
-                <p>Date Start: {formattedDateStart}</p>
+                <p>Date Start: {spot.dateStart}</p>
                 <p>Date End: {formattedDateEnd}</p>
               </MDBCardText>
             </MDBCardBody>
@@ -87,6 +88,8 @@ const SpotDetails = () => {
                   selected={startDate}
                   onChange={handleStartDateChange}
                   value={startDate}
+                  minDate={new Date("06-30-2023")}
+                  // maxDate={formattedDateEnd}
                   required
                 />
                 <p>Park-out</p>
