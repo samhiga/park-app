@@ -30,12 +30,6 @@ const userSchema = new Schema({
       ref: "ParkingSpot",
     },
   ],
-  renteeSpots: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "ParkingSpot",
-    },
-  ],
   history: [
     {
       type: Schema.Types.ObjectId,

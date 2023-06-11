@@ -42,7 +42,7 @@ const resolvers = {
     //   // return null;
     // },
     user: async () => {
-      return await User.find({});
+      return await User.find({}).populate("rentalSpots").populate("history");
     },
     //Finds all parkingSpots
     parkingSpot: async () => {
@@ -50,7 +50,7 @@ const resolvers = {
     },
     //Finds all parkingRentals
     parkingRental: async (parent, { id }) => {
-      return await ParkingRental.find({});
+      return await ParkingRental.find({}).populate("owner").populate("rentee");
       // return ParkingRental.findById(id);
     },
     getSPP: async (parent, { _id }) => {

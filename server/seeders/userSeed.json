@@ -3,26 +3,184 @@
     "username": "Brian Kernighan",
     "email": "bkernighan@techfriends.dev",
     "password": "password01",
-    "biography": "I am a computer scientist who worked at Bell Labs and helped create the C programming language."
-
+    "biography": "I am a computer scientist who worked at Bell Labs and helped create the C programming language.",
+    "rentalSpots": [],
+    "history": []
   },
   {
     "username": "Ada Lovelace",
     "email": "ada@lovelace.com",
     "password": "password02",
-    "biography": "I am often considered the world's first computer programmer."
-
+    "biography": "I am often considered the world's first computer programmer.",
+    "rentalSpots": [],
+    "history": []
   },
   {
     "username": "Grace Hopper",
     "email": "grace@hopper.org",
     "password": "password03",
-    "biography": "I was a pioneer in computer programming and helped develop the COBOL programming language."
+    "biography": "I was a pioneer in computer programming and helped develop the COBOL programming language.",
+    "rentalSpots": [],
+    "history": []
   },
   {
     "username": "Walter White",
     "email": "Walter@meth.org",
-    "password": "doingMethIsCool",
-    "biography": "I am the one who Parks"
+    "password": "theonewhoparks",
+    "biography": "I am the one who Parks",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Whiskers",
+    "email": "whiskers@example.com",
+    "password": "meow123",
+    "biography": "I am a playful cat who loves chasing strings and taking naps.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Felix",
+    "email": "felix@example.com",
+    "password": "purr456",
+    "biography": "I am a mischievous cat who enjoys exploring boxes and catching mice.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Luna",
+    "email": "luna@example.com",
+    "password": "catlover789",
+    "biography": "I am a graceful cat who loves sunbathing and chasing laser pointers.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Mittens",
+    "email": "mittens@example.com",
+    "password": "whisker789",
+    "biography": "I am a cuddly cat who enjoys being petted and playing with yarn balls.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Simba",
+    "email": "simba@example.com",
+    "password": "lionking123",
+    "biography": "I am a majestic cat who rules over my kingdom and loves taking long naps.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Cleo",
+    "email": "cleo@example.com",
+    "password": "queenofcats",
+    "biography": "I am a regal cat who demands attention and treats from my loyal subjects.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Oliver",
+    "email": "oliver@example.com",
+    "password": "whiskers456",
+    "biography": "I am a curious cat who enjoys climbing trees and exploring new places.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Misty",
+    "email": "misty@example.com",
+    "password": "paws789",
+    "biography": "I am a mysterious cat who likes to hide in boxes and watch the world from afar.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Ginger",
+    "email": "ginger@example.com",
+    "password": "gingercat123",
+    "biography": "I am a fiery cat who loves to play and chase birds in the garden.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Whisper",
+    "email": "whisper@example.com",
+    "password": "silentpaws",
+    "biography": "I am a mysterious cat who moves like a shadow and speaks with a whisper.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Muffin",
+    "email": "muffin@example.com",
+    "password": "sweetmeows",
+    "biography": "I am a sweet and fluffy cat who loves to be pampered and cuddled.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Whiskers Jr.",
+    "email": "whiskersjr@example.com",
+    "password": "kitten123",
+    "biography": "I am a playful and curious kitten who is always getting into adventures.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Salem",
+    "email": "salem@example.com",
+    "password": "witchescat",
+    "biography": "I am a mystical black cat who brings good luck and keeps witches company.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Midnight",
+    "email": "midnight@example.com",
+    "password": "nightowl456",
+    "biography": "I am a nocturnal cat who loves prowling in the moonlight and hunting mice.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Whiskers III",
+    "email": "whiskersiii@example.com",
+    "password": "generations123",
+    "biography": "I am the third generation of a noble cat lineage with a proud history.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Paws",
+    "email": "paws@example.com",
+    "password": "pawprints789",
+    "biography": "I am a playful cat who loves leaving my pawprints all around the house.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Cupcake",
+    "email": "cupcake@example.com",
+    "password": "sweetkitty123",
+    "biography": "I am a cute and cuddly cat who enjoys eating treats and taking catnaps.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Garfield",
+    "email": "garfield@example.com",
+    "password": "lasagna456",
+    "biography": "I am a lazy cat who loves lasagna and sleeping in comfortable spots.",
+    "rentalSpots": [],
+    "history": []
+  },
+  {
+    "username": "Shadow",
+    "email": "shadow@example.com",
+    "password": "mysterious789",
+    "biography": "I am a mysterious cat who disappears into the shadows and watches silently.",
+    "rentalSpots": [],
+    "history": []
   }
 ]
