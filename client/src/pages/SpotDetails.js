@@ -4,8 +4,17 @@ import { useQuery } from "@apollo/client";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { QUERY_SINGLE_PARKING_SPOT } from "../utils/queries";
-import { MDBContainer, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBBtn, MDBRow, MDBCol } from "mdb-react-ui-kit";
-import moment from 'moment';
+import {
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBBtn,
+  MDBRow,
+  MDBCol,
+} from "mdb-react-ui-kit";
+import moment from "moment";
 
 const SpotDetails = () => {
   const { spotId } = useParams();
@@ -15,9 +24,6 @@ const SpotDetails = () => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  // const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
-  //I want to KNOW if my query single parking spot is correct.
 
   if (loading) {
     return <div>Loading...</div>;
@@ -33,28 +39,33 @@ const SpotDetails = () => {
     spot.owner.username = "Username not found!";
   }
 
-  // function to set min end date to whatever user selects for start date
-  const handleStartDateChange = (date) => {
-    setStartDate(date);
-    // Update the minimum end date based on the selected start date
-    setEndDate((prevEndDate) => {
-      if (date > prevEndDate) {
-        return date;
-      }
-      return prevEndDate;
-    });
+  console.log(spot.endDate);
+  // const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
+  //I want to KNOW if my query single parking spot is correct.
+
+  const handleStartDateChange = (event) => {
+    const newStartDate = event.getTime();
+    if (newStartDate) setStartDate(newStartDate);
+  };
+  const handleEndDateChange = (event) => {
+    const newEndDate = event.getTime();
+    setEndDate(newEndDate);
   };
 
   // calculate the total price of the rental based on how many days are chosen
   const calculatePrice = () => {
-    const start = startDate.getTime();
-    const end = endDate.getTime();
+    const start = startDate;
+    const end = endDate;
     const days = (end - start) / (1000 * 3600 * 24);
-    return spot.price * days;
+    return (spot.price * days).toFixed();
   };
 
-  // const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
+  //spot returns the date in unix time.
+
+  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
+
   const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
+  let enddatemaxdate = new Date(spot.dateEnd);
 
   return (
     <MDBContainer>
@@ -70,7 +81,7 @@ const SpotDetails = () => {
                   Address: {spot.streetAddress}, {spot.zipcode}
                 </p>
                 <p>Active: {spot.active ? "Yes" : "No"}</p>
-                <p>Date Start: {spot.dateStart}</p>
+                <p>Date Start: {formattedDateStart}</p>
                 <p>Date End: {formattedDateEnd}</p>
               </MDBCardText>
             </MDBCardBody>
@@ -88,8 +99,8 @@ const SpotDetails = () => {
                   selected={startDate}
                   onChange={handleStartDateChange}
                   value={startDate}
-                  minDate={new Date("06-30-2023")}
-                  // maxDate={formattedDateEnd}
+                  minDate={new Date()}
+                  maxDate={enddatemaxdate}
                   required
                 />
                 <p>Park-out</p>
@@ -97,9 +108,10 @@ const SpotDetails = () => {
                   name="endDate"
                   label="Pick End Date"
                   selected={endDate}
-                  onChange={(date) => setEndDate(date)}
+                  onChange={handleEndDateChange}
                   value={endDate}
-                  minDate={startDate}
+                  minDate={new Date()}
+                  maxDate={enddatemaxdate}
                   required
                 />
                 <p>Total Price: ${calculatePrice()}</p>
@@ -111,7 +123,6 @@ const SpotDetails = () => {
       </MDBRow>
     </MDBContainer>
   );
-  
 };
 
 // const getScheduleString = (spot) => {
@@ -131,3 +142,8 @@ const SpotDetails = () => {
 // };
 
 export default SpotDetails;
+
+//TO DO:
+//I need to "get" my end date, which is informed by spot.endDate
+//This value is in UNIX format, I need to create that into a new Date object with the inputted time.
+//I then I want to set that time to my max value on my button.
