@@ -39,13 +39,25 @@ const SpotDetails = () => {
     spot.owner.username = "Username not found!";
   }
 
-  console.log(spot.endDate);
   // const { loading, data } = useQuery(QUERY_PARKING_SPOTS);
   //I want to KNOW if my query single parking spot is correct.
 
+  //LORD HELP ME FOR I HAVE SINNED
+  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
+  const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
+  let enddatemaxdate = new Date(spot.dateEnd);
+  let startdatemaxdate = new Date(endDate);
+  let enddatemindate = new Date(startDate);
+  //LORD HELP ME FOR I HAVE SINNED
+
   const handleStartDateChange = (event) => {
     const newStartDate = event.getTime();
-    if (newStartDate) setStartDate(newStartDate);
+    if (newStartDate > endDate) {
+      console.log(newStartDate);
+      console.log(endDate);
+    } else {
+      setStartDate(newStartDate);
+    }
   };
   const handleEndDateChange = (event) => {
     const newEndDate = event.getTime();
@@ -56,16 +68,11 @@ const SpotDetails = () => {
   const calculatePrice = () => {
     const start = startDate;
     const end = endDate;
-    const days = (end - start) / (1000 * 3600 * 24);
+    const days = (end - start) / (1000 * 3600 * 24) + 1;
     return (spot.price * days).toFixed();
   };
 
   //spot returns the date in unix time.
-
-  const formattedDateStart = new Date(spot.dateStart).toLocaleDateString();
-
-  const formattedDateEnd = new Date(spot.dateEnd).toLocaleDateString();
-  let enddatemaxdate = new Date(spot.dateEnd);
 
   return (
     <MDBContainer>
@@ -100,7 +107,7 @@ const SpotDetails = () => {
                   onChange={handleStartDateChange}
                   value={startDate}
                   minDate={new Date()}
-                  maxDate={enddatemaxdate}
+                  maxDate={startdatemaxdate}
                   required
                 />
                 <p>Park-out</p>
@@ -110,7 +117,7 @@ const SpotDetails = () => {
                   selected={endDate}
                   onChange={handleEndDateChange}
                   value={endDate}
-                  minDate={new Date()}
+                  minDate={enddatemindate}
                   maxDate={enddatemaxdate}
                   required
                 />
