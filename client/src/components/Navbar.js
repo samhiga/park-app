@@ -57,6 +57,7 @@ const Navbar = () => {
               <MDBNavbarLink className="hover">History</MDBNavbarLink>
             </Link>
           </MDBNavbarItem>
+          {/* {checks if logged in through token to show logout, if not displays login } */}
           {AuthService.loggedIn() ? (
             <>
               <MDBNavbarItem>
