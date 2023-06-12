@@ -32,6 +32,16 @@ export const QUERY_USER = gql`
         pricePaid
         active
       }
+      rentalSpots {
+        _id
+        name
+        description
+        streetAddress
+        zipcode
+        price
+        dateStart
+        dateEnd
+      }
     }
   }
 `;

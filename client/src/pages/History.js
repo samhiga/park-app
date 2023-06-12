@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
 // import ParkingSpotList from "../components/ParkingSpotList";
 import { ParkingSpotSesh } from "../components/ParkingSpotSesh";
+import { ParkingSpotCard } from "../components/ParkingSpotCard";
 import {
   MDBCardBody,
   MDBCardText,
@@ -32,10 +33,14 @@ const History = () => {
       const user = data?.user;
       let activeUser = user[Math.floor(Math.random() * user.length)];
       console.log("Data is: ");
-      console.log(data);
+      console.log(activeUser);
       let activeRented = [];
       let deactiveRented = [];
+      let activeRental = [];
 
+      for (let i = 0; i < activeUser.rentalSpots.length; i++) {
+        activeRental.push(activeUser.rentalSpots[i]);
+      }
       for (let i = 0; i < activeUser.history.length; i++) {
         if (activeUser.history[i].active) {
           activeRented.push(activeUser.history[i]);
@@ -43,7 +48,7 @@ const History = () => {
           deactiveRented.push(activeUser.history[i]);
         }
       }
-
+      setActiveRental(activeRental);
       setactiveRented(activeRented);
       setDeactiveRented(deactiveRented);
     }
@@ -54,10 +59,8 @@ const History = () => {
   }
 
   let sayHi = () => {
-    console.log("active rented is: ");
-    console.log(activeRented);
-    console.log("deactive rented is: ");
-    console.log(deactiveRented);
+    console.log("active rental is: ");
+    console.log(activeRental);
   };
   //Have logic to separate our "Active" From "Inactive"
 
@@ -68,6 +71,16 @@ const History = () => {
           <MDBCol>
             <div className="text-center">
               <h1 className="display-4 mb-4">Spots on market</h1>
+              {activeRental.map((data) => (
+                <ParkingSpotCard key={data._id} ParkingSpot={data} />
+              ))}
+            </div>
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <MDBCol>
+            <div className="text-center">
+              <h1 className="display-4 mb-4">Active Purchases</h1>
               {activeRented.map((data) => (
                 <ParkingSpotSesh key={data._id} ParkingSpot={data} />
               ))}
@@ -77,17 +90,7 @@ const History = () => {
         <MDBRow>
           <MDBCol>
             <div className="text-center">
-              <h1 className="display-4 mb-4">Spots you are buying</h1>
-              {activeRented.map((data) => (
-                <ParkingSpotSesh key={data._id} ParkingSpot={data} />
-              ))}
-            </div>
-          </MDBCol>
-        </MDBRow>
-        <MDBRow>
-          <MDBCol>
-            <div className="text-center">
-              <h1 className="display-4 mb-4">Inactive Spots you have rented</h1>
+              <h1 className="display-4 mb-4">Inactive Purchases</h1>
               {deactiveRented.map((data) => (
                 <ParkingSpotSesh key={data._id} ParkingSpot={data} />
               ))}

@@ -43,7 +43,10 @@ const resolvers = {
     // },
     user: async () => {
       return await User.find({})
-        .populate("rentalSpots")
+        .populate({
+          path: "rentalSpots",
+          model: "ParkingSpot",
+        })
         .populate({
           path: "history",
           model: "ParkingRental",

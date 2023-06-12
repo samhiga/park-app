@@ -31,7 +31,6 @@ export const ParkingSpotSesh = ({ ParkingSpot }) => {
       <MDBCard
         className="text-center h-100 mb-4 g-3 p-3 x-4 y-4 text-white"
         style={{ maxWidth: "22rem", backgroundColor: "#1565C0" }}
-        t
       >
         <MDBCardBody>
           <MDBCardTitle>{`Session ID: ${ParkingSpot._id}`}</MDBCardTitle>
