@@ -28,7 +28,7 @@ ParkApp is a web application that allows users to rent out their parking spots a
 
 | Technology Used         | Resource URL           | 
 | ------------- |:-------------:| 
-| Place | [Place]()     |  
+| Framer Motion | [Framer Motion](https://www.framer.com/motion/)     |  
 | MongoDB | [MongoDB](https://www.mongodb.com/)     |     
 | MD Bootstrap | [MD Bootstrap](https://mdbootstrap.com/)     |     
 | Nodemon | [Nodemon](https://www.npmjs.com/package/nodemon)    |     
