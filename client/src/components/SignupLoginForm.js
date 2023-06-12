@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import {
   MDBInput,
@@ -15,6 +16,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 // import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import { response } from "express";
 
 //remember to name ADD_User correctly in utils/mutations.js
 
@@ -45,6 +47,7 @@ import { ADD_USER } from "../utils/mutations";
 
 const SignupForm = () => {
   //Alerts for bad inputs, commented out for now.
+  const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [validated] = useState(false);
   //STATES
@@ -138,14 +141,23 @@ const SignupForm = () => {
     event.preventDefault();
     console.log("Form data before sending:", registerFormData);
     try {
-      let { data } = await doRegisterFormData({
+      let response = await doRegisterFormData({
         variables: { ...registerFormData },
       });
+      const { data } = response
       console.log(data);
+
+      //* Save token to localStorage
+      if (data.addUser.token) {
+        localStorage.setItem('token', data.addUser.token);
+      }
+      setShowAlert(false);
       // Auth.login(data.addUser.token);
       //Send our stuff to Auth, which will close the modal.
+      navigate("/")
     } catch (err) {
       console.error(err);
+      setShowAlert(true);
     }
   };
 
