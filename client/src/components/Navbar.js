@@ -80,30 +80,6 @@ const Navbar = () => {
               </MDBNavbarLink>
             </MDBNavbarItem>
           )}
-          {/* <MDBNavbarItem>
-            <Link to="/list">
-              <MDBNavbarLink>List a Spot</MDBNavbarLink>
-            </Link>
-          </MDBNavbarItem> */}
-          {/* Commented out because auth isn't used yet. */}
-          {/* {Auth.loggedIn() ? (
-            <>
-              <MDBNavbarItem>
-                <Link to="/saved">
-                  <MDBNavbarLink>See Your Spots</MDBNavbarLink>
-                </Link>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink onClick={Auth.logout}>Logout</MDBNavbarLink>
-              </MDBNavbarItem>
-            </>
-          ) : ( */}
-          <MDBNavbarItem>
-            <MDBNavbarLink className="hover" onClick={() => setShowModal(true)}>
-              Login/Sign Up
-            </MDBNavbarLink>
-          </MDBNavbarItem>
-          {/* )} */}
         </MDBNavbarNav>
       </MDBNavbar>
 

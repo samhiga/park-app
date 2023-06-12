@@ -26,7 +26,7 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.2 }}
       >
         <MDBCard
           className="text-center h-100 mb-4 g-3 p-3 x-4 y-4 text-white"
