@@ -1,31 +1,46 @@
 import { gql } from "@apollo/client";
+// rentalSpots {
+//   _id
+//   name
+//   streetAddress
+//   zipcode
+//   price
+//   dateStart
+//   dateEnd
+//   description
+// }
 
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+  query user {
+    user {
       _id
       username
       email
       biography
+      history {
+        _id
+        owner {
+          _id
+          username
+        }
+        rentee {
+          _id
+          username
+        }
+        dateBookedStart
+        dateBookedEnd
+        pricePaid
+        active
+      }
       rentalSpots {
         _id
         name
+        description
         streetAddress
         zipcode
         price
         dateStart
         dateEnd
-        description
-      }
-      history {
-        _id
-        name
-        streetAddress
-        zipcode
-        price
-        dateStart
-        dateEnd
-        description
       }
     }
   }

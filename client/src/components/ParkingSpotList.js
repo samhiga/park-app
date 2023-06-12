@@ -12,7 +12,7 @@ const ParkingSpotList = () => {
     return <div>Loading...</div>;
   }
 
-  const cardData = data?.parkingSpot || [];
+  const cardData = data?.parkingSpot || data;
 
   //Add logic to map through our card data, feed that to create a parkingSpot, feed each iterationg into ParkingSpot on the ParkingSpotCard.
   return (

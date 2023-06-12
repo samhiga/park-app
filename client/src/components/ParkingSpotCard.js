@@ -14,9 +14,11 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
   }
   // Add logic to parse the dateStarts and dateEnds.
   const spotDetailsPath = `/spotdetails/${ParkingSpot._id}`;
-  
+
   // change date to local time
-  const formattedDateStart = new Date(ParkingSpot.dateStart).toLocaleDateString();
+  const formattedDateStart = new Date(
+    ParkingSpot.dateStart
+  ).toLocaleDateString();
   const formattedDateEnd = new Date(ParkingSpot.dateEnd).toLocaleDateString();
 
   return (

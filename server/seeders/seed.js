@@ -6,6 +6,7 @@ const parkingRentalSeeds = require("./parkingRentalSeed.json");
 
 db.once("open", async () => {
   try {
+    // Example usage
     await ParkingRental.deleteMany({});
     await ParkingSpot.deleteMany({});
     await User.deleteMany({});
@@ -64,6 +65,7 @@ db.once("open", async () => {
       let randomUser1 = users[Math.floor(Math.random() * users.length)];
       let randomUser2 = users[Math.floor(Math.random() * users.length)];
       session.owner = randomUser1._id;
+      session.active = Math.random() >= 0.5;
       randomUser1.history.push(session._id);
       await randomUser1.save();
 
