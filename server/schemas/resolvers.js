@@ -1,5 +1,5 @@
-// const { AuthenticationError } = require('apollo-server-express');
-// const { signToken } = require("../utils/auth")
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
 const { GraphQLScalarType, Kind } = require("graphql");
 const { User, ParkingSpot, ParkingRental } = require("../models");
 // make a query to find all of opur parking spots. homepage etc
@@ -97,15 +97,20 @@ const resolvers = {
         throw new Error("Failed to fetch user's past parking spots");
       }
     },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("history");
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
       try {
-        console.log("I got called");
         const user = await User.create({ username, email, password });
-        console.log("User is: ");
-        console.log(user);
-        return user;
+
+        const token = signToken(user);
+        return { token, user };
       } catch (err) {
         console.error(err);
       }
@@ -169,22 +174,22 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+      console.log(`Our user is : ${user}`);
       if (!user) {
         //REPLACE ME ONCE AUTHENTICATION ERRORS ARE IN!
         console.log("User not found!");
-        // throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         console.log("Password is not correct!");
-        // throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
       //Use this once we're asble to sign tokens
 
-      // const token = signToken(user);
-      return { user };
-      // return { token, user}
+      const token = signToken(user);
+      return { token, user };
     },
   },
   Date: dateScalar,

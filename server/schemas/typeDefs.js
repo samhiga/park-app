@@ -20,6 +20,10 @@ const { gql } = require("apollo-server-express");
 // pricePaid: Int!
 const typeDefs = gql`
   scalar Date
+  type Auth {
+    token: ID!
+    user: User
+  }
   type ParkingSpot {
     _id: ID
     name: String!
@@ -63,9 +67,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(username: String!, email: String!, password: String!): User
+    createUser(username: String!, email: String!, password: String!): Auth
 
-    login(email: String!, password: String!): User
+    login(email: String!, password: String!): Auth
 
     createParkingSpot(
       name: String!
