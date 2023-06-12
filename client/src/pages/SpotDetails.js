@@ -36,7 +36,7 @@ const SpotDetails = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [ownerState, setOwnerState] = useState();
-  const [priceState, setPriceState] = useState();
+  const [priceState, setPriceState] = useState("50");
   //Form data
   const [createformData, { err, createdformdata }] = useMutation(
     CREATE_PARKING_RENTAL
@@ -47,7 +47,7 @@ const SpotDetails = () => {
     rentee: "64856e5473c4b0334ec6f132",
     dateBookedStart: new Date().getTime(),
     dateBookedEnd: new Date().getTime(),
-    pricePaid: "50",
+    pricePaid: priceState,
     active: true,
   });
 
@@ -70,8 +70,7 @@ const SpotDetails = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-    updateParticipants();
-    updateParticipants();
+    //OH LOOOORDDD
     //update the owner to be our current owner.
     setFormState((prevFormData) => ({
       ...prevFormData,
@@ -106,15 +105,24 @@ const SpotDetails = () => {
   //GOD THIS IS SO HACKY
   //FORGIVE ME PLEASE (You'll have to feather the form to get this to work LOL)
   //This is what useEffect() is for ? but it's not playing nice :)
+  const sayHi = () => {
+    const newPrice = calculatePrice();
+    setPriceState(calculatePrice());
+    setFormState((prevFormData) => ({
+      ...prevFormData,
+      pricePaid: newPrice,
+    }));
+    return;
+  };
+
   const updateParticipants = (event) => {
     //We'll have to grab our rentee from the Auth and update the formstate with him as well.
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    setOwnerState(currOwner);
     setPriceState(calculatePrice());
+    setOwnerState(currOwner);
     setFormState((prevFormData) => ({
       ...prevFormData,
       owner: currOwner,
@@ -126,22 +134,18 @@ const SpotDetails = () => {
     const newStartDate = event.getTime();
 
     setStartDate(newStartDate);
-    setPriceState(calculatePrice());
     setFormState((prevFormData) => ({
       ...prevFormData,
       dateBookedStart: newStartDate,
-      pricePaid: priceState,
     }));
   };
   const handleEndDateChange = (event) => {
     const newEndDate = event.getTime();
 
     setEndDate(newEndDate);
-    setPriceState(calculatePrice());
     setFormState((prevFormData) => ({
       ...prevFormData,
       dateBookedEnd: newEndDate,
-      pricePaid: priceState,
     }));
   };
 
@@ -221,6 +225,7 @@ const SpotDetails = () => {
                     color="secondary"
                     type="submit"
                     form="createrentalform"
+                    onMouseEnter={sayHi}
                   >
                     Rent Me
                   </MDBBtn>
