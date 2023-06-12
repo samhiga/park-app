@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 //heroku set environment variable  for secrets
 //show environment variables section for configuration, hidden by default
-const secret = "tempsecret";
+const secret = process.env.SECRET || 'tempsecret';
 const expiration = '2w';
 
 module.exports = {

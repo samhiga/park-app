@@ -5,9 +5,6 @@ const { User, ParkingSpot, ParkingRental } = require("../models");
 // make a query to find all of opur parking spots. homepage etc
 
 //Function associated with the custom scalar.
-// https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/
-//Give credit to snippet in README.
-//We got this from above
 const dateScalar = new GraphQLScalarType({
   name: "Date",
   description: "Date custom scalar type",
@@ -35,12 +32,6 @@ const dateScalar = new GraphQLScalarType({
 
 const resolvers = {
   Query: {
-    //Finds all users
-    // user: async (parent, { id }) => {
-    //   // return User.find({});
-    //   return User.findById(id);
-    //   // return null;
-    // },
     user: async () => {
       return await User.find({})
         .populate({
@@ -195,31 +186,3 @@ const resolvers = {
   Date: dateScalar,
 };
 module.exports = resolvers;
-
-//Can use mongoose's populate - which will populate.
-//Or can optimize by specifying down beneath.
-
-// User: {
-//   rentalSpots: async (parent, args, context, info) => {
-//     return ParkingSpot.find({ owner: parent.id });
-//   },
-//   renteeSpots: async (parent, args, context, info) => {
-//     return ParkingRental.find({ rentee: parent.id });
-//   },
-//   history: async (parent, args, context, info) => {
-//     // Implement logic to retrieve user's booking history
-//   },
-// },
-// ParkingSpot: {
-//   owner: async (parent, args, context, info) => {
-//     return User.findById(parent.owner);
-//   },
-// },
-// ParkingRental: {
-//   owner: async (parent, args, context, info) => {
-//     return User.findById(parent.owner);
-//   },
-//   rentee: async (parent, args, context, info) => {
-//     return User.findById(parent.rentee);
-//   },
-// },
