@@ -16,6 +16,8 @@ import {
 // import LoginForm from "./LoginForm";
 import SignupForm from "./SignupLoginForm";
 import "./Navbar.css";
+//*logout functionality
+import AuthService from "../utils/auth";
 // Removed unused import
 // import Auth from "../utils/auth";
 // let logo = require("../images/parkapplogo.png");
@@ -26,9 +28,16 @@ const Navbar = () => {
   const closeModal = () => setShowModal(false);
   return (
     <>
-      <MDBNavbar expand="lg" light style={{ backgroundColor: "#0D47A1", height: '70px' }} className="p-3 mb-2 text-white shadow">
+      <MDBNavbar
+        expand="lg"
+        light
+        style={{ backgroundColor: "#0D47A1", height: "70px" }}
+        className="p-3 mb-2 text-white shadow"
+      >
         {/* Replace this with a walter white */}
-        <MDBNavbarBrand href="/"><span style={{ fontSize: '2.5rem', color: '#00B0FF' }}>P</span>ark App</MDBNavbarBrand>
+        <MDBNavbarBrand href="/">
+          <span style={{ fontSize: "2.5rem", color: "#00B0FF" }}>P</span>ark App
+        </MDBNavbarBrand>
 
         <MDBNavbarNav className="justify-content-end">
           {/* <MDBNavbarItem>
@@ -48,6 +57,29 @@ const Navbar = () => {
               <MDBNavbarLink className="hover">History</MDBNavbarLink>
             </Link>
           </MDBNavbarItem>
+          {AuthService.loggedIn() ? (
+            <>
+              <MDBNavbarItem>
+                <Link to="/saved">
+                  <MDBNavbarLink>See Your Spots</MDBNavbarLink>
+                </Link>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink onClick={AuthService.logout}>
+                  Logout
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+            </>
+          ) : (
+            <MDBNavbarItem>
+              <MDBNavbarLink
+                className="hover"
+                onClick={() => setShowModal(true)}
+              >
+                Login/Sign Up
+              </MDBNavbarLink>
+            </MDBNavbarItem>
+          )}
           {/* <MDBNavbarItem>
             <Link to="/list">
               <MDBNavbarLink>List a Spot</MDBNavbarLink>
@@ -67,7 +99,7 @@ const Navbar = () => {
             </>
           ) : ( */}
           <MDBNavbarItem>
-            <MDBNavbarLink className ="hover" onClick={() => setShowModal(true)}>
+            <MDBNavbarLink className="hover" onClick={() => setShowModal(true)}>
               Login/Sign Up
             </MDBNavbarLink>
           </MDBNavbarItem>
