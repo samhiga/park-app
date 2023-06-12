@@ -1,0 +1,5 @@
+.card-wrapper {
+    position: relative;
+    opacity: 50%;
+    transform: translateY(50px);
+  }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { motion } from "framer-motion";
 import {
   MDBCard,
   MDBCardBody,
@@ -20,15 +21,27 @@ export const ParkingSpotCard = ({ ParkingSpot }) => {
 
   return (
     <Link to={spotDetailsPath}>
-    <MDBCard className="text-center h-100 mb-4 g-3 p-3 x-4 y-4 text-white" style={{ maxWidth: "22rem", backgroundColor: "#1565C0" }}  t>
-      <MDBCardBody>
-        <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
-        <MDBCardText>{`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}</MDBCardText>
-        <MDBCardText>{`${formattedDateStart} - ${formattedDateEnd}`}</MDBCardText>
-        <MDBCardText>{ParkingSpot.description}</MDBCardText>
-        <MDBCardText>${ParkingSpot.price} Per Day</MDBCardText>
-      </MDBCardBody>
-    </MDBCard>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <MDBCard
+          className="text-center h-100 mb-4 g-3 p-3 x-4 y-4 text-white"
+          style={{ maxWidth: "22rem", backgroundColor: "#1565C0" }}
+        >
+          <MDBCardBody>
+            <MDBCardTitle>{ParkingSpot.name}</MDBCardTitle>
+            <MDBCardText>{`${ParkingSpot.streetAddress}, ${ParkingSpot.zipcode}`}</MDBCardText>
+            <MDBCardText>{`${formattedDateStart} - ${formattedDateEnd}`}</MDBCardText>
+            <MDBCardText>{ParkingSpot.description}</MDBCardText>
+            <MDBCardText>${ParkingSpot.price} Per Day</MDBCardText>
+          </MDBCardBody>
+        </MDBCard>
+      </motion.div>
     </Link>
   );
 };
+
+
+
