@@ -53,6 +53,7 @@ const resolvers = {
       return await ParkingRental.find({}).populate("owner").populate("rentee");
       // return ParkingRental.findById(id);
     },
+
     getSPP: async (parent, { _id }) => {
       const params = _id ? { _id } : {};
       console.log("Params is: ");
@@ -121,9 +122,25 @@ const resolvers = {
         console.error(err);
       }
     },
-    createParkingRental: async (parent, args) => {
-      const parkingRental = await ParkingRental.create(args);
-      return parkingRental;
+    createParkingRental: async (
+      parent,
+      { owner, rentee, dateBookedStart, dateBookedEnd, pricePaid, active }
+    ) => {
+      try {
+        console.log("Creating rental session.");
+        const parkingRental = await ParkingRental.create({
+          owner,
+          rentee,
+          dateBookedStart,
+          dateBookedEnd,
+          pricePaid,
+          active,
+        });
+        //When I get this, I should also push this to my owner and rentee's history.
+        return parkingRental;
+      } catch (err) {
+        console.log(err);
+      }
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -145,36 +162,34 @@ const resolvers = {
       // return { token, user}
     },
   },
-
-  //Can use mongoose's populate - which will populate.
-  //Or can optimize by specifying down beneath.
-
-  // User: {
-  //   rentalSpots: async (parent, args, context, info) => {
-  //     return ParkingSpot.find({ owner: parent.id });
-  //   },
-  //   renteeSpots: async (parent, args, context, info) => {
-  //     return ParkingRental.find({ rentee: parent.id });
-  //   },
-  //   history: async (parent, args, context, info) => {
-  //     // Implement logic to retrieve user's booking history
-  //   },
-  // },
-  // ParkingSpot: {
-  //   owner: async (parent, args, context, info) => {
-  //     return User.findById(parent.owner);
-  //   },
-  // },
-  // ParkingRental: {
-  //   owner: async (parent, args, context, info) => {
-  //     return User.findById(parent.owner);
-  //   },
-  //   rentee: async (parent, args, context, info) => {
-  //     return User.findById(parent.rentee);
-  //   },
-  // },
-
   Date: dateScalar,
 };
-
 module.exports = resolvers;
+
+//Can use mongoose's populate - which will populate.
+//Or can optimize by specifying down beneath.
+
+// User: {
+//   rentalSpots: async (parent, args, context, info) => {
+//     return ParkingSpot.find({ owner: parent.id });
+//   },
+//   renteeSpots: async (parent, args, context, info) => {
+//     return ParkingRental.find({ rentee: parent.id });
+//   },
+//   history: async (parent, args, context, info) => {
+//     // Implement logic to retrieve user's booking history
+//   },
+// },
+// ParkingSpot: {
+//   owner: async (parent, args, context, info) => {
+//     return User.findById(parent.owner);
+//   },
+// },
+// ParkingRental: {
+//   owner: async (parent, args, context, info) => {
+//     return User.findById(parent.owner);
+//   },
+//   rentee: async (parent, args, context, info) => {
+//     return User.findById(parent.rentee);
+//   },
+// },
