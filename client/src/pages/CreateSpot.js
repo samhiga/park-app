@@ -9,19 +9,10 @@ import { useMutation } from "@apollo/client";
 // import { QUERY_PARKING_SPOTS } from "../utils/queries";
 //TO DO LIST
 import { CREATE_PARKING_SPOT } from "../utils/mutations";
-
+import { motion } from "framer-motion";
 import {
-  MDBRow,
-  MDBCol,
   MDBInput,
-  MDBCheckbox,
   MDBBtn,
-  MDBIcon,
-  MDBTabs,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsContent,
-  MDBTabsPane,
   MDBContainer,
   MDBCard,
   MDBCardBody,
@@ -136,8 +127,13 @@ const CreateSpot = () => {
   };
 
   return (
-    <div>
-      <MDBContainer>
+        <div>
+           <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+    <MDBContainer>
       <MDBCard style={{ background: 'linear-gradient(90deg, rgba(69,69,69,1) 0%, rgba(89,89,91,1) 50%, rgba(69,69,69,1) 100%)' }}>
         <MDBCardBody style={{ padding: "20px" }}>
         <MDBCardTitle>Welcome To Create A Parking Spot!</MDBCardTitle>
@@ -226,6 +222,7 @@ const CreateSpot = () => {
         </MDBCardBody>
         </MDBCard>
       </MDBContainer>
+      </motion.div>
     </div>
   );
 };
