@@ -5,8 +5,6 @@ import {
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBRow,
-  MDBCol,
 } from "mdb-react-ui-kit";
 
 export const ParkingSpotCard = ({ ParkingSpot }) => {
