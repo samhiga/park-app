@@ -64,6 +64,37 @@ export const CREATE_PARKING_SPOT = gql`
   }
 `;
 
+export const CREATE_PARKING_RENTAL = gql`
+  mutation CreateParkingRental(
+    $owner: ID
+    $rentee: ID
+    $dateBookedStart: Date
+    $dateBookedEnd: Date
+    $pricePaid: String
+    $active: Boolean
+  ) {
+    createParkingRental(
+      owner: $owner
+      rentee: $rentee
+      dateBookedStart: $dateBookedStart
+      dateBookedEnd: $dateBookedEnd
+      pricePaid: $pricePaid
+      active: $active
+    ) {
+      owner {
+        _id
+      }
+      rentee {
+        _id
+      }
+      dateBookedStart
+      dateBookedEnd
+      pricePaid
+      active
+    }
+  }
+`;
+
 export const UPDATE_PARKING_SPOT = gql`
   mutation UpdateParkingSpot(
     $_id: ID!
