@@ -220,7 +220,7 @@ const SignupForm = () => {
             onClick={() => handleTabClick("Register")}
             active={tabActive === "Register"}
           >
-            Not a memer? Register!
+            Not a user? Register!
           </MDBTabsLink>
         </MDBTabsPane>
 
@@ -265,7 +265,7 @@ const SignupForm = () => {
               Sign up
             </MDBBtn>
           </form>
-          Already a memer? Login!
+          Already a user? Login!
         </MDBTabsPane>
       </MDBTabsContent>
     </MDBContainer>
