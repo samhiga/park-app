@@ -14,6 +14,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 // import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 //remember to name ADD_User correctly in utils/mutations.js
 
@@ -73,12 +74,12 @@ const SignupForm = () => {
   };
 
   //USER LOGIN CODE MUTATION
-  const [login, { loginErr, loginData, loginLoading }] =
-    useMutation(LOGIN_USER);
+  const [login, { error: loginErr }] = useMutation(LOGIN_USER);
 
   //REGISTER USER CODE MUTATION
 
-  const [doRegisterFormData, { err, data }] = useMutation(ADD_USER);
+  const [doRegisterFormData, { error: registerErr, data: registerData }] =
+    useMutation(ADD_USER);
 
   //HANDLE LOGIN INPUT
 
@@ -110,8 +111,9 @@ const SignupForm = () => {
       const response = await login({
         variables: { ...userFormData },
       });
-      console.log("Response is: ");
-      console.log(response);
+
+      console.log("your log in information is: ", response);
+      Auth.login(response.data.login.token);
       //Log will return our user information RN. It should be returning AUTH.
       //It's ready to setup with AUTH.
       if (!response.ok) {
@@ -122,8 +124,8 @@ const SignupForm = () => {
       console.log("User is: ");
       console.log(response);
       //Auth for logging in.
-    } catch (err) {
-      console.error(err);
+    } catch (loginErr) {
+      console.error(loginErr);
       // setShowAlert(true);
     }
     //Clear the form.
@@ -140,7 +142,7 @@ const SignupForm = () => {
         variables: { ...registerFormData },
       });
       console.log(data);
-      // Auth.login(data.addUser.token);
+      Auth.login(data.createUser.token);
       //Send our stuff to Auth, which will close the modal.
     } catch (err) {
       console.error(err);
@@ -187,7 +189,7 @@ const SignupForm = () => {
               value={userFormData.email}
               required
             />
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBInput
               name="password"
               label="Password"
@@ -197,7 +199,7 @@ const SignupForm = () => {
               value={userFormData.password}
               required
             />
-            <div style={{ marginBottom: '.5rem' }}></div>
+            <div style={{ marginBottom: ".5rem" }}></div>
             <div className="d-flex justify-content-between mx-4 mb-4">
               <MDBCheckbox
                 name="flexCheck"
@@ -234,7 +236,7 @@ const SignupForm = () => {
               onChange={handleRegisterInputChange}
               value={registerFormData.username}
             />
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBInput
               name="email"
               label="Email"
@@ -244,7 +246,7 @@ const SignupForm = () => {
               value={registerFormData.email}
             />
 
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBInput
               name="password"
               label="Password"
@@ -254,7 +256,7 @@ const SignupForm = () => {
               value={registerFormData.password}
             />
 
-            <div style={{ marginBottom: '1rem' }}></div>
+            <div style={{ marginBottom: "1rem" }}></div>
             <MDBBtn
               className="mb-4 w-100"
               form="registerform"
