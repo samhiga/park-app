@@ -11,17 +11,8 @@ import { useMutation } from "@apollo/client";
 import { CREATE_PARKING_SPOT } from "../utils/mutations";
 
 import {
-  MDBRow,
-  MDBCol,
   MDBInput,
-  MDBCheckbox,
   MDBBtn,
-  MDBIcon,
-  MDBTabs,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsContent,
-  MDBTabsPane,
   MDBContainer,
   MDBCard,
   MDBCardBody,
