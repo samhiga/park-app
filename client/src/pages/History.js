@@ -63,47 +63,75 @@ const History = () => {
     console.log(activeRental);
   };
   //Have logic to separate our "Active" From "Inactive"
+  
 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100">
       <MDBContainer>
-        <MDBRow>
-          <MDBCol>
-            <div className="text-center">
-              <h1 className="display-4 mb-4">Spots on market</h1>
-              {activeRental.map((data) => (
-                <ParkingSpotCard key={data._id} ParkingSpot={data} />
-              ))}
-            </div>
-          </MDBCol>
-        </MDBRow>
-        <MDBRow>
-          <MDBCol>
-            <div className="text-center">
-              <h1 className="display-4 mb-4">Active Purchases</h1>
-              {activeRented.map((data) => (
-                <ParkingSpotSesh key={data._id} ParkingSpot={data} />
-              ))}
-            </div>
-          </MDBCol>
-        </MDBRow>
-        <MDBRow>
-          <MDBCol>
-            <div className="text-center">
-              <h1 className="display-4 mb-4">Inactive Purchases</h1>
-              {deactiveRented.map((data) => (
-                <ParkingSpotSesh key={data._id} ParkingSpot={data} />
-              ))}
-            </div>
-          </MDBCol>
-        </MDBRow>
-        <MDBRow className="row-cols-1 row-cols-md-3 g-5 p-5 mb-4">
-          <MDBCard
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(69,69,69,1) 0%, rgba(89,89,91,1) 50%, rgba(69,69,69,1) 100%)",
-            }}
-          >
+      <MDBRow>
+    <MDBCol>
+      <MDBCard style={{ marginBottom: '1rem' }}> 
+        <MDBCardBody>
+          <MDBCardTitle className="text-center">
+            <h1 className="display-4 mb-4">Spots on Market</h1>
+          </MDBCardTitle>
+          <MDBRow>
+            {activeRental.map((data) => (
+              <MDBCol key={data._id} md="4">
+                <div className="text-center">
+                  <ParkingSpotCard ParkingSpot={data} />
+                </div>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
+  </MDBRow>
+
+  <MDBRow>
+    <MDBCol>
+      <MDBCard style={{ marginBottom: '1rem' }}>
+        <MDBCardBody>
+          <MDBCardTitle className="text-center">
+            <h1 className="display-4 mb-4">Active Purchases</h1>
+          </MDBCardTitle>
+          <MDBRow>
+            {activeRented.map((data) => (
+              <MDBCol key={data._id} md="4">
+                <div className="text-center">
+                  <ParkingSpotSesh ParkingSpot={data} />
+                </div>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
+  </MDBRow>
+
+  <MDBRow>
+    <MDBCol>
+      <MDBCard>
+        <MDBCardBody>
+          <MDBCardTitle className="text-center">
+            <h1 className="display-4 mb-4">Inactive Purchases</h1>
+          </MDBCardTitle>
+          <MDBRow>
+            {deactiveRented.map((data) => (
+              <MDBCol key={data._id} md="4">
+                <div className="text-center">
+                  <ParkingSpotSesh ParkingSpot={data} />
+                </div>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
+  </MDBRow>
+        {/* <MDBRow>
+          <MDBCard> */}
             {/* Render your cards using a mapping function */}
             {/* {userPastParkingSpots.map((data) => ( */}
             {/* <MDBCol key={data.id}> */}
@@ -112,8 +140,8 @@ const History = () => {
             </MDBCardBody>
             {/* </MDBCol> */}
             {/*  ))} */}
-          </MDBCard>
-        </MDBRow>
+          {/* </MDBCard>
+        </MDBRow> */}
       </MDBContainer>
     </div>
   );
