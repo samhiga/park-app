@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Visit the Deployed Site]( )
+[Visit the Deployed Site](https://park-app.herokuapp.com/)
 
 ParkApp is a web application that allows users to rent out their parking spots and enables other users to find and rent available parking spots. It functions similarly to Airbnb but for parking spots. Users can list their parking spots for rent, set availability and pricing, and users looking for parking can search for available spots, make reservations, and pay securely through the platform.
 
@@ -33,8 +33,7 @@ ParkApp is a web application that allows users to rent out their parking spots a
 | MD Bootstrap | [MD Bootstrap](https://mdbootstrap.com/)     |     
 | Nodemon | [Nodemon](https://www.npmjs.com/package/nodemon)    |     
 | Bcrypt | [Bcrypt](https://www.npmjs.com/package/bcrypt)     |     
-| Concurrently |[Concurrently](https://www.npmjs.com/package/concurrently )     | 
-| Express-Handlebars | [Express-Handlebars](https://www.npmjs.com/package/express-session)     |   
+| Concurrently |[Concurrently](https://www.npmjs.com/package/concurrently )     |    
 | Express | [Express](https://www.npmjs.com/package/express-handlebars)| 
 | dotenv | [dotenv](https://www.npmjs.com/package/dotenv)   |   
 | GraphQL | [GraphQL](https://graphql.org/)    |   
@@ -44,7 +43,7 @@ ParkApp is a web application that allows users to rent out their parking spots a
 | CSS | [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)         |   
 | Excalidraw | [Excalidraw](https://excalidraw.com/)         |   
 | HTML | [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)         |   
-| Git | [https://git-scm.com/](https://git-scm.com/)     |  
+| Git | [Git](https://git-scm.com/)     |  
 
 ---------------------
 
