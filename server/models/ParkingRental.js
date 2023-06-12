@@ -20,7 +20,7 @@ const ParkingRentalSchema = new Schema({
     required: true,
   },
   pricePaid: {
-    type: Number,
+    type: String,
     required: true,
   },
   active: {
@@ -29,6 +29,10 @@ const ParkingRentalSchema = new Schema({
   },
 });
 
+// active: {
+//   type: Boolean,
+//   required: true,
+// },
 const ParkingRental = model("ParkingRental", ParkingRentalSchema);
 
 module.exports = ParkingRental;

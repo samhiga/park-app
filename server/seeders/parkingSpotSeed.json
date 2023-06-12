@@ -7,8 +7,8 @@
       "zipcode": "12345",
       "price": "10",
       "active": true,
-      "dateStart": "2022-07-01T00:00:00.000Z",
-      "dateEnd": "2022-07-31T23:59:59.000Z"
+      "dateStart": "2023-05-01T00:00:00.000Z",
+      "dateEnd": "2023-07-31T23:59:59.000Z"
     },
     {
       "name": "Parking Spot 2",
@@ -18,8 +18,8 @@
       "zipcode": "54321",
       "price": "15",
       "active": true,
-      "dateStart": "2022-08-01T00:00:00.000Z",
-      "dateEnd": "2022-08-31T23:59:59.000Z"
+      "dateStart": "2023-06-01T00:00:00.000Z",
+      "dateEnd": "2023-08-31T23:59:59.000Z"
 
     },
     {
@@ -30,8 +30,8 @@
       "zipcode": "67890",
       "price": "20",
       "active": true,
-      "dateStart": "2022-09-01T00:00:00.000Z",
-      "dateEnd": "2022-09-30T23:59:59.000Z"
+      "dateStart": "2023-03-01T00:00:00.000Z",
+      "dateEnd": "2023-09-30T23:59:59.000Z"
     },
     {
       "name": "Pawsome Parking",
@@ -41,8 +41,8 @@
       "zipcode": "12345",
       "price": "10",
       "active": true,
-      "dateStart": "2022-07-01T00:00:00.000Z",
-      "dateEnd": "2022-07-31T23:59:59.000Z"
+      "dateStart": "2023-05-01T00:00:00.000Z",
+      "dateEnd": "2023-10-31T23:59:59.000Z"
     },
     {
       "name": "Whisker's Haven",
@@ -52,8 +52,8 @@
       "zipcode": "54321",
       "price": "15",
       "active": true,
-      "dateStart": "2022-08-01T00:00:00.000Z",
-      "dateEnd": "2022-08-31T23:59:59.000Z"
+      "dateStart": "2023-05-01T00:00:00.000Z",
+      "dateEnd": "2023-08-31T23:59:59.000Z"
     },
     {
       "name": "Meow Undercover",
@@ -63,8 +63,8 @@
       "zipcode": "67890",
       "price": "20",
       "active": true,
-      "dateStart": "2022-09-01T00:00:00.000Z",
-      "dateEnd": "2022-09-30T23:59:59.000Z"
+      "dateStart": "2023-04-01T00:00:00.000Z",
+      "dateEnd": "2023-09-30T23:59:59.000Z"
     },
     {
       "name": "Feline Retreat",
@@ -74,8 +74,8 @@
       "zipcode": "54321",
       "price": "12",
       "active": true,
-      "dateStart": "2022-10-01T00:00:00.000Z",
-      "dateEnd": "2022-10-31T23:59:59.000Z"
+      "dateStart": "2023-06-01T00:00:00.000Z",
+      "dateEnd": "2023-10-31T23:59:59.000Z"
     },
     {
       "name": "Guarded Whiskers",
@@ -85,8 +85,8 @@
       "zipcode": "67890",
       "price": "18",
       "active": true,
-      "dateStart": "2022-11-01T00:00:00.000Z",
-      "dateEnd": "2022-11-30T23:59:59.000Z"
+      "dateStart": "2023-04-01T00:00:00.000Z",
+      "dateEnd": "2023-11-30T23:59:59.000Z"
     },
     {
       "name": "Catnip Haven",
@@ -96,8 +96,8 @@
       "zipcode": "12345",
       "price": "14",
       "active": true,
-      "dateStart": "2022-12-01T00:00:00.000Z",
-      "dateEnd": "2022-12-31T23:59:59.000Z"
+      "dateStart": "2023-06-01T00:00:00.000Z",
+      "dateEnd": "2023-12-31T23:59:59.000Z"
     },
     {
       "name": "Cuddly Carpark",
@@ -107,8 +107,8 @@
       "zipcode": "54321",
       "price": "13",
       "active": true,
-      "dateStart": "2023-01-01T00:00:00.000Z",
-      "dateEnd": "2023-01-31T23:59:59.000Z"
+      "dateStart": "2023-05-01T00:00:00.000Z",
+      "dateEnd": "2023-10-31T23:59:59.000Z"
     },
     {
       "name": "Cat's Corner",
@@ -118,8 +118,8 @@
       "zipcode": "67890",
       "price": "16",
       "active": true,
-      "dateStart": "2023-02-01T00:00:00.000Z",
-      "dateEnd": "2023-02-28T23:59:59.000Z"
+      "dateStart": "2023-03-01T00:00:00.000Z",
+      "dateEnd": "2023-08-28T23:59:59.000Z"
     },
     {
       "name": "Purrfect Park",
@@ -129,8 +129,8 @@
       "zipcode": "12345",
       "price": "11",
       "active": true,
-      "dateStart": "2023-03-01T00:00:00.000Z",
-      "dateEnd": "2023-03-31T23:59:59.000Z"
+      "dateStart": "2023-06-01T00:00:00.000Z",
+      "dateEnd": "2023-10-31T23:59:59.000Z"
     },
     {
       "name": "Catnap Oasis",
@@ -141,7 +141,7 @@
       "price": "17",
       "active": true,
       "dateStart": "2023-04-01T00:00:00.000Z",
-      "dateEnd": "2023-04-30T23:59:59.000Z"
+      "dateEnd": "2023-08-30T23:59:59.000Z"
     },
     {
       "name": "Paw Prints Parking",
@@ -152,7 +152,7 @@
       "price": "19",
       "active": true,
       "dateStart": "2023-05-01T00:00:00.000Z",
-      "dateEnd": "2023-05-31T23:59:59.000Z"
+      "dateEnd": "2023-10-31T23:59:59.000Z"
     },
     {
       "name": "Cat's Crossing",
@@ -163,7 +163,7 @@
       "price": "13",
       "active": true,
       "dateStart": "2023-06-01T00:00:00.000Z",
-      "dateEnd": "2023-06-30T23:59:59.000Z"
+      "dateEnd": "2023-10-30T23:59:59.000Z"
     },
     {
       "name": "Whisker's Retreat",
@@ -174,7 +174,7 @@
       "price": "15",
       "active": true,
       "dateStart": "2023-07-01T00:00:00.000Z",
-      "dateEnd": "2023-07-31T23:59:59.000Z"
+      "dateEnd": "2023-11-31T23:59:59.000Z"
     },
     {
       "name": "Purrfectly Secure",
@@ -184,8 +184,8 @@
       "zipcode": "67890",
       "price": "21",
       "active": true,
-      "dateStart": "2023-08-01T00:00:00.000Z",
-      "dateEnd": "2023-08-31T23:59:59.000Z"
+      "dateStart": "2023-05-01T00:00:00.000Z",
+      "dateEnd": "2023-12-31T23:59:59.000Z"
     },
     {
       "name": "Cat's Delight",
@@ -195,8 +195,8 @@
       "zipcode": "12345",
       "price": "16",
       "active": true,
-      "dateStart": "2023-09-01T00:00:00.000Z",
-      "dateEnd": "2023-09-30T23:59:59.000Z"
+      "dateStart": "2023-04-01T00:00:00.000Z",
+      "dateEnd": "2023-12-30T23:59:59.000Z"
     },
     {
       "name": "Catnap Haven",
@@ -206,8 +206,8 @@
       "zipcode": "54321",
       "price": "18",
       "active": true,
-      "dateStart": "2023-10-01T00:00:00.000Z",
-      "dateEnd": "2023-10-31T23:59:59.000Z"
+      "dateStart": "2023-06-01T00:00:00.000Z",
+      "dateEnd": "2023-08-31T23:59:59.000Z"
     },
     {
       "name": "Paws and Park",
@@ -217,7 +217,7 @@
       "zipcode": "67890",
       "price": "14",
       "active": true,
-      "dateStart": "2023-11-01T00:00:00.000Z",
+      "dateStart": "2023-06-01T00:00:00.000Z",
       "dateEnd": "2023-11-30T23:59:59.000Z"
     }
   ]
