@@ -12,36 +12,10 @@ import {
 } from "mdb-react-ui-kit";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
-// import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 //remember to name ADD_User correctly in utils/mutations.js
-
-// const [validated] = useState(false);
-
-// const handleFormSubmit = async (event) => {
-//   event.preventDefault();
-//   const form = event.currentTarget;
-//   if (form.checkValidity() === false) {
-//     event.preventDefault();
-//     event.stopPropagation();
-//   }
-//   try {
-//     let userData = await addUser({ variables: userFormData });
-//     //note that order of properties in the object does not matter as long as they are correctly named to match the corresponding properties in the source object, i.e our mutation.
-//     const { token, user } = userData.data.addUser;
-//     Auth.login(token);
-//   } catch (err) {
-//     console.error(err);
-//     setShowAlert(true);
-//   }
-//   setUserFormData({
-//     username: "",
-//     email: "",
-//     password: "",
-//   });
-// };
 
 const SignupForm = () => {
   //Alerts for bad inputs, commented out for now.

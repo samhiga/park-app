@@ -75,14 +75,6 @@ db.once("open", async () => {
       await session.save();
     }
 
-    //Now I need to create sessions, that are connected with users connected with random users.
-
-    //Go through our sessions.
-    //Pick two random users.
-    // assign their IDs to that session.
-    //Assign that session to both their historys.
-    //randomize whether active should be true or false.
-
     //I only want to push a parkingSpot to a random user if no matches were found at all in any of the users.
     //If a match was found in any of the users, we leave it.
     console.log(parkingrentals);
